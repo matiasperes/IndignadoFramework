@@ -1,0 +1,104 @@
+﻿@model IEnumerable<IndignadoFramework.Entities.Movimiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Roles.IsUserInRole("AdministradorGeneral"))
+{
+    <h2>MOVIMIENTOS</h2>
+    <br />
+    <br />
+
+}
+else { 
+
+    <h2>MOVIMIENTO</h2>
+    <br />
+    <br />
+}
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estilo)
+        </th>
+        <th></th>
+    </tr>
+@{
+    if (Roles.IsUserInRole("AdministradorGeneral"))
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estilo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Estadisticas", "Estadisticas", new { name = item.Nombre }) |
+                <br />
+                @Html.ActionLink("Contenidos Inadecuados", "ContenidosInadecuados", new { id = item.Id, nommov = item.Nombre })
+                @*Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            </td>
+        </tr>
+        }
+        
+
+    }
+    else
+    {
+        string nommov = (string)Session["nommov2"];
+        foreach (var item in Model)
+        {
+            if (nommov == item.Nombre)
+            {
+            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estilo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id })| 
+                @Html.ActionLink("Estadisticas", "Estadisticas", new { name = item.Nombre }) |
+                <br />
+                @Html.ActionLink("Contenidos Inadecuados", "ContenidosInadecuados", new { id = item.Id, nommov = item.Nombre })
+                @*Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            </td>
+            </tr>
+            }
+        }
+    }
+    
+}
+</table>
+
+<br />
+@if (Roles.IsUserInRole("AdministradorGeneral"))
+{
+    String mov = (String)Session["nomMov"];
+    <p>
+        @Html.ActionLink("Crear Movimiento", "Create")
+    </p>            
+        <img src="/@mov/Movimiento/Graficas?name=basura&grafNum=2" alt="" style="width: 300px;"/> 
+}

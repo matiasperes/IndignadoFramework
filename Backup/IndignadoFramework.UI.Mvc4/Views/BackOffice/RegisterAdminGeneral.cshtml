@@ -1,0 +1,45 @@
+﻿@model IndignadoFramework.UI.Mvc4.Models.RegisterModel
+@{
+    ViewBag.Title = "RegisterAdminGeneral";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Registro Administrador General</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.contraseña)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.contraseña)
+            @Html.ValidationMessageFor(model => model.contraseña)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ccontraseña)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ccontraseña)
+            @Html.ValidationMessageFor(model => model.ccontraseña)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

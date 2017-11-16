@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://serena-yeoh//LayerSample/Expense/2007/08" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://serena-yeoh//LayerSample/Expense/2007/08" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://serena-yeoh//LayerSample/Expense/2007/08/Imports">
+      <xsd:import schemaLocation="http://localhost:8000/FrontOfficeService?xsd=xsd0" namespace="http://serena-yeoh//LayerSample/Expense/2007/08" />
+      <xsd:import schemaLocation="http://localhost:8000/FrontOfficeService?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" />
+      <xsd:import schemaLocation="http://localhost:8000/FrontOfficeService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8000/FrontOfficeService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" />
+      <xsd:import schemaLocation="http://localhost:8000/FrontOfficeService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFrontOfficeService_AgregarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_AgregarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_AgregarUsuario_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q1:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerEspecificacionUsuarioXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEspecificacionUsuarioXId" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerEspecificacionUsuarioXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEspecificacionUsuarioXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerEspecificacionUsuarioXId_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q2:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerEspecificacionUsuarioXMembership_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEspecificacionUsuarioXMembership" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerEspecificacionUsuarioXMembership_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerEspecificacionUsuarioXMembershipResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerEspecificacionUsuarioXMembership_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q3:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_GetFuentesDatosMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFuentesDatosMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_GetFuentesDatosMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFuentesDatosMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_GetFuentesDatosMovimiento_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q4:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriaXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerConvocatoriaXId" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriaXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerConvocatoriaXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriaXId_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q5:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_AgregarConvocatoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarConvocatoria" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_AgregarConvocatoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarConvocatoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_AgregarConvocatoria_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q6:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ConfirmarAsistenciaConvocatoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmarAsistenciaConvocatoria" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ConfirmarAsistenciaConvocatoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmarAsistenciaConvocatoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ConfirmarAsistenciaConvocatoria_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q7:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriasMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerConvocatoriasMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriasMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerConvocatoriasMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriasMovimiento_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q8:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriasPaginando_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerConvocatoriasPaginando" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriasPaginando_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerConvocatoriasPaginandoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerConvocatoriasPaginando_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q9:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerCategoriasTematicas_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCategoriasTematicas" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerCategoriasTematicas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerCategoriasTematicasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFrontOfficeService_ObtenerCategoriasTematicas_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q10:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:portType name="IFrontOfficeService">
+    <wsdl:operation name="AgregarUsuario">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/AgregarUsuario" message="tns:IFrontOfficeService_AgregarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/AgregarUsuarioResponse" message="tns:IFrontOfficeService_AgregarUsuario_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/AgregarUsuarioProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_AgregarUsuario_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEspecificacionUsuarioXId">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerEspecificacionUsuarioXId" message="tns:IFrontOfficeService_ObtenerEspecificacionUsuarioXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerEspecificacionUsuarioXIdResponse" message="tns:IFrontOfficeService_ObtenerEspecificacionUsuarioXId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerEspecificacionUsuarioXIdProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_ObtenerEspecificacionUsuarioXId_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEspecificacionUsuarioXMembership">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerEspecificacionUsuarioXMembership" message="tns:IFrontOfficeService_ObtenerEspecificacionUsuarioXMembership_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerEspecificacionUsuarioXMembershipResponse" message="tns:IFrontOfficeService_ObtenerEspecificacionUsuarioXMembership_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerEspecificacionUsuarioXMembershipProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_ObtenerEspecificacionUsuarioXMembership_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFuentesDatosMovimiento">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/GetFuentesDatosMovimiento" message="tns:IFrontOfficeService_GetFuentesDatosMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/GetFuentesDatosMovimientoResponse" message="tns:IFrontOfficeService_GetFuentesDatosMovimiento_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/GetFuentesDatosMovimientoProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_GetFuentesDatosMovimiento_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConvocatoriaXId">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriaXId" message="tns:IFrontOfficeService_ObtenerConvocatoriaXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriaXIdResponse" message="tns:IFrontOfficeService_ObtenerConvocatoriaXId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriaXIdProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_ObtenerConvocatoriaXId_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarConvocatoria">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/AgregarConvocatoria" message="tns:IFrontOfficeService_AgregarConvocatoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/AgregarConvocatoriaResponse" message="tns:IFrontOfficeService_AgregarConvocatoria_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/AgregarConvocatoriaProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_AgregarConvocatoria_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarAsistenciaConvocatoria">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ConfirmarAsistenciaConvocatoria" message="tns:IFrontOfficeService_ConfirmarAsistenciaConvocatoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ConfirmarAsistenciaConvocatoriaResponse" message="tns:IFrontOfficeService_ConfirmarAsistenciaConvocatoria_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ConfirmarAsistenciaConvocatoriaProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_ConfirmarAsistenciaConvocatoria_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConvocatoriasMovimiento">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriasMovimiento" message="tns:IFrontOfficeService_ObtenerConvocatoriasMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriasMovimientoResponse" message="tns:IFrontOfficeService_ObtenerConvocatoriasMovimiento_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriasMovimientoProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_ObtenerConvocatoriasMovimiento_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConvocatoriasPaginando">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriasPaginando" message="tns:IFrontOfficeService_ObtenerConvocatoriasPaginando_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriasPaginandoResponse" message="tns:IFrontOfficeService_ObtenerConvocatoriasPaginando_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriasPaginandoProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_ObtenerConvocatoriasPaginando_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCategoriasTematicas">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerCategoriasTematicas" message="tns:IFrontOfficeService_ObtenerCategoriasTematicas_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerCategoriasTematicasResponse" message="tns:IFrontOfficeService_ObtenerCategoriasTematicas_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerCategoriasTematicasProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IFrontOfficeService_ObtenerCategoriasTematicas_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

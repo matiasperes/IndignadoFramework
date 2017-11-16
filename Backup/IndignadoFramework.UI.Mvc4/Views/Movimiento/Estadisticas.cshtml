@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Estadisticas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    String mov = (String)Session["nomMov"];
+}
+<h2>Estadisticas</h2>
+    <br />
+    <br />
+    <table>
+    <tr>
+        <th>
+            Usuarios registrados por mes en el ultimo año
+        </th>
+        <th>
+            Usuarios registrados por año en los ultimos 5 años
+        </th>
+    </tr>
+    <tr>
+            <td>
+                
+    <img src="/@mov/Movimiento/Graficas?name=@ViewBag.Name&grafNum=0" alt="" />
+            </td>
+                        <td>
+                
+    
+    <img src="/@mov/Movimiento/Graficas?name=@ViewBag.Name&grafNum=1" alt="" /> 
+            </td>
+            </tr>
+                </table>
+        <br />
+     <br />
+    <div><a href="/@mov/Movimiento/GetPdf?name=@ViewBag.Name">Obtener PDF</a></div>
+
+    @*<h2>Estadisticas</h2>
+    <br />
+    <br />
+
+
+    <br />
+    <h3>Usuarios registrados por mes en el ultimo año</h3>
+        <br />
+    <img src="/@mov/Movimiento/Graficas?name=@ViewBag.Name&grafNum=0" alt="" />
+        <br />
+    <br />
+    <h3>Usuarios registrados por año en los ultimos 5 años</h3>
+        <br />
+    <img src="/@mov/Movimiento/Graficas?name=@ViewBag.Name&grafNum=1" alt="" /> 
+     <br />
+    <div><a href="/@mov/Movimiento/GetPdf?name=@ViewBag.Name">Obtener PDF</a></div>*@

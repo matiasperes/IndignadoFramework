@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{54FF54E2-045A-41C8-B9DA-B53FC98948BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IndignadoFramework.UIProcess</RootNamespace>
+    <AssemblyName>IndignadoFramework.UIProcess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackOfficeUserProcess.cs" />
+    <Compile Include="ConvocatoriaUserProcess.cs" />
+    <Compile Include="IBackOfficeUserProcess.cs" />
+    <Compile Include="IConvocatoriaUserProcess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\BackOfficeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FrontOfficeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IndignadoFramework.Entities\IndignadoFramework.Entities.csproj">
+      <Project>{83C6A1AF-CCDD-422C-83A2-F881632EB0B4}</Project>
+      <Name>IndignadoFramework.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\IndignadoFramework.Entities.Convocatoria.datasource" />
+    <None Include="Properties\DataSources\IndignadoFramework.Entities.Movimiento.datasource" />
+    <None Include="Properties\DataSources\IndignadoFramework.Entities.WebFeed.datasource" />
+    <None Include="Service References\BackOfficeService\BackOfficeService.wsdl" />
+    <None Include="Service References\BackOfficeService\BackOfficeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BackOfficeService\BackOfficeService1.wsdl" />
+    <None Include="Service References\BackOfficeService\BackOfficeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BackOfficeService\BackOfficeService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BackOfficeService\BackOfficeService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BackOfficeService\" />
+    <WCFMetadataStorage Include="Service References\FrontOfficeService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BackOfficeService\BackOfficeService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BackOfficeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BackOfficeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BackOfficeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FrontOfficeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FrontOfficeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FrontOfficeService\FrontOfficeService2.wsdl" />
+    <None Include="Service References\FrontOfficeService\FrontOfficeService21.wsdl" />
+    <None Include="Service References\FrontOfficeService\FrontOfficeService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FrontOfficeService\FrontOfficeService41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FrontOfficeService\FrontOfficeService42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FrontOfficeService\FrontOfficeService43.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FrontOfficeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FrontOfficeService\FrontOfficeService1.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

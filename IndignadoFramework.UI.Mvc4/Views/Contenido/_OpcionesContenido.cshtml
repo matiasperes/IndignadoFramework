@@ -1,0 +1,69 @@
+﻿
+
+@{
+    string idCont = ((int)ViewBag.IdContenido).ToString();
+    bool Megusta = ViewBag.MeGusta;
+    bool Inadecuado = ViewBag.Inadecuado;
+    string CantMegusta = ((int)ViewBag.CantMegusta).ToString();
+}
+
+<script type="text/javascript">
+
+    function disable(anchor, id, mi) 
+    {
+
+        if (anchor.data("disabled"))
+        {
+            return false;
+        }
+        else {
+        if(mi == 1)
+            $('form#form' + id).trigger('submit');
+            else
+                $('form#formIn' + id).trigger('submit');
+        } 
+    
+        anchor.data("disabled", "disabled");
+    }
+</script>
+
+<div id="@idCont">
+    
+    @using (Ajax.BeginForm("MeGusta", "Contenido", new { idContenido = ViewBag.IdContenido },
+        new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            UpdateTargetId = idCont,
+        }, new { id = "form" + idCont }))
+    {
+        if (Megusta)
+        {
+            <a class="icon iconMegusta" onclick="disable($(this),'@idCont',1);"><span>Label</span></a>
+        }
+        else
+        {
+            <a class="icon iconMegusta disabled"><span>Label</span></a>
+        }
+    }
+
+    @using (Ajax.BeginForm("Inadecuado", "Contenido", new { idContenido = ViewBag.IdContenido },
+        new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            UpdateTargetId = idCont
+        }, new { id = "formIn" + idCont }))
+    {
+        if (Inadecuado)
+        {
+            <a class="icon iconInadecuado" onclick="disable($(this),'@idCont',2);"><span>Label</span></a>
+        }
+        else
+        {
+            <a class="icon iconInadecuado disabled"><span>Label</span></a>
+        }
+    }
+    <p>Votos: @CantMegusta</p>
+
+</div>

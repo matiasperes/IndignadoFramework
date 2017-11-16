@@ -1,0 +1,144 @@
+﻿@model IndignadoFramework.UI.Mvc4.Models.RegisterModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Registro del Administrador";
+}
+
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script type="text/javascript">
+          var map = null;
+          var click;
+          function getMap() {
+              map = new Microsoft.Maps.Map(document.getElementById('myMap'), { credentials: 'AjKX5fPclkvH3YTYhLImWMour1KISHMrcFVBrXzVsjqwMLiWobOq83esCN1ra0Q0' });
+          }
+
+          function mapClickEventHandler() {
+              click = Microsoft.Maps.Events.addHandler(map, 'click', displayInfo);
+              alert('Perform action on map to fire this event');
+          }
+          function detachMapClickEventHandler() {
+              Microsoft.Maps.Events.removeHandler(click);
+              alert('event detached');
+          }
+          displayInfo = function (e) {
+              var output = document.getElementById("output");
+              if (!output) {
+                  output = document.createElement("div");
+                  output.id = "output";
+                  document.body.appendChild(output);
+              }
+              output.innerHTML = "Event info - " + e.eventName + "<br><br>"
+                           + "Window:" + e.originalEvent.screenX + "(x) " + e.originalEvent.screenY + "(y)<br>"
+                           + "client:" + e.originalEvent.clientX + "(x) " + e.originalEvent.clientY + "(y)<br>"
+                           + "Keychar:" + e.originalEvent.keyCode + "<br>"
+                           + "keys  :" + e.originalEvent.altKey + "(alt) " + e.originalEvent.ctrlKey + "(ctrl) " + e.originalEvent.shiftKey + "(shift)<br>";
+          };
+
+          function setView() {
+              map.setView({ zoom: 10, center: new Microsoft.Maps.Location("@Model.latitud", "@Model.longitud") });
+          }
+
+          endDragDetails = function (e) {
+
+              var $latitud = $('#latitud');
+              var valueLatitude = $latitud.val();
+              var $longitud = $('#longitud');
+              var valueLongitud = $longitud.val();
+
+              valueLatitude = e.entity.getLocation().latitude.toString();
+              $latitud.val(valueLatitude);
+              valueLongitud = e.entity.getLocation().longitude.toString();
+              $longitud.val(valueLongitud);
+
+          };
+
+          function addPinPin(lon, lat) {
+              var pushpinOptions = { draggable: true };
+
+              var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lat, lon), pushpinOptions);
+              var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+              map.entities.push(pushpin);
+          }
+
+
+
+          $(document).ready(function () { getMap(); setView(); });
+          $(window).load(function () { addPinPin("@Model.longitud", "@Model.latitud"); });
+
+
+
+</script>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Registrar Administrador</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.apellido)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.apellido)
+            @Html.ValidationMessageFor(model => model.apellido)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.contraseña)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.contraseña)
+            @Html.ValidationMessageFor(model => model.contraseña)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ccontraseña)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ccontraseña)
+            @Html.ValidationMessageFor(model => model.ccontraseña)
+        </div>
+        <div class="editor-label">
+            @Html.Label("Ubicación Geografica")
+            <br>
+        </div>
+
+        <input type="hidden" id="latitud" name="latitud" value="@Model.latitud" />
+
+        <input type="hidden" id="longitud" name="longitud" value="@Model.longitud" />
+
+        <div> 
+            <div id='myMap' style="position:relative; width:400px; height:400px;"></div>
+            <div id='output'> </div>
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

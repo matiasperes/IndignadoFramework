@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8000/BackOfficeService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="FuenteWEB">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Movimiento" nillable="true" type="tns:Movimiento" />
+      <xs:element minOccurs="0" name="MovimientoId" type="xs:int" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrlDll" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="FuenteWEB" nillable="true" type="tns:FuenteWEB" />
+  <xs:complexType name="Movimiento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Convocatorias" nillable="true" type="tns:ArrayOfConvocatoria" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estilo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FuentesWEB" nillable="true" type="tns:ArrayOfFuenteWEB" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Logo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="M" type="xs:int" />
+      <xs:element minOccurs="0" name="N" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UbicacionLatitud" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="UbicacionLongitud" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Usuarios" nillable="true" type="tns:ArrayOfEspecificacionUsuario" />
+      <xs:element minOccurs="0" name="X" type="xs:int" />
+      <xs:element minOccurs="0" name="Z" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Movimiento" nillable="true" type="tns:Movimiento" />
+  <xs:complexType name="ArrayOfConvocatoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Convocatoria" nillable="true" type="tns:Convocatoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConvocatoria" nillable="true" type="tns:ArrayOfConvocatoria" />
+  <xs:complexType name="Convocatoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantUsuariosConfirmados" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoriaTematica" nillable="true" type="tns:CategoriaTematica" />
+      <xs:element minOccurs="0" name="CategoriaTematicaId" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Inicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Movimiento" nillable="true" type="tns:Movimiento" />
+      <xs:element minOccurs="0" name="MovimientoId" type="xs:int" />
+      <xs:element minOccurs="0" name="Quorum" type="xs:int" />
+      <xs:element minOccurs="0" name="Suspendida" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Titulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UbicacionLatitud" type="xs:double" />
+      <xs:element minOccurs="0" name="UbicacionLongitud" type="xs:double" />
+      <xs:element minOccurs="0" name="UsuariosConfirmados" nillable="true" type="tns:ArrayOfEspecificacionUsuario" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Convocatoria" nillable="true" type="tns:Convocatoria" />
+  <xs:complexType name="CategoriaTematica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contenidos" nillable="true" type="tns:ArrayOfContenido" />
+      <xs:element minOccurs="0" name="Convocatorias" nillable="true" type="tns:ArrayOfConvocatoria" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usuarios" nillable="true" type="tns:ArrayOfEspecificacionUsuario" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="CategoriaTematica" nillable="true" type="tns:CategoriaTematica" />
+  <xs:complexType name="ArrayOfContenido">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contenido" nillable="true" type="tns:Contenido" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContenido" nillable="true" type="tns:ArrayOfContenido" />
+  <xs:complexType name="Contenido">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantMeGusta" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoriaTematica" nillable="true" type="tns:CategoriaTematica" />
+      <xs:element minOccurs="0" name="CategoriaTematicaId" type="xs:int" />
+      <xs:element minOccurs="0" name="EspecificacionUsuario" nillable="true" type="tns:EspecificacionUsuario" />
+      <xs:element minOccurs="0" name="EspecificacionUsuarioId" type="xs:int" />
+      <xs:element minOccurs="0" name="FechaPosteado" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Habilitado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Inadecuado" type="xs:int" />
+      <xs:element minOccurs="0" name="Inadecuados" nillable="true" type="tns:ArrayOfEspecificacionUsuario" />
+      <xs:element minOccurs="0" name="Megusta" nillable="true" type="tns:ArrayOfMegusta" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Titulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ubicacion" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Contenido" nillable="true" type="tns:Contenido" />
+  <xs:complexType name="EspecificacionUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AsisteAConvocatorias" nillable="true" type="tns:ArrayOfConvocatoria" />
+      <xs:element minOccurs="0" name="BajasContenido" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoriasTematicas" nillable="true" type="tns:ArrayOfCategoriaTematica" />
+      <xs:element minOccurs="0" name="Contenido" nillable="true" type="tns:ArrayOfContenido" />
+      <xs:element minOccurs="0" name="Contenidos" nillable="true" type="tns:ArrayOfContenido" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Megusta" nillable="true" type="tns:ArrayOfMegusta" />
+      <xs:element minOccurs="0" name="Membership" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Movimiento" nillable="true" type="tns:Movimiento" />
+      <xs:element minOccurs="0" name="MovimientoId" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UbicacionLatitud" type="xs:double" />
+      <xs:element minOccurs="0" name="UbicacionLongitud" type="xs:double" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="EspecificacionUsuario" nillable="true" type="tns:EspecificacionUsuario" />
+  <xs:complexType name="ArrayOfCategoriaTematica">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoriaTematica" nillable="true" type="tns:CategoriaTematica" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategoriaTematica" nillable="true" type="tns:ArrayOfCategoriaTematica" />
+  <xs:complexType name="ArrayOfMegusta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Megusta" nillable="true" type="tns:Megusta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMegusta" nillable="true" type="tns:ArrayOfMegusta" />
+  <xs:complexType name="Megusta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contenido" nillable="true" type="tns:Contenido" />
+      <xs:element minOccurs="0" name="ContenidoId" type="xs:int" />
+      <xs:element minOccurs="0" name="EspecificacionUsuario" nillable="true" type="tns:EspecificacionUsuario" />
+      <xs:element minOccurs="0" name="EspecificacionUsuarioId" type="xs:int" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Megusta" nillable="true" type="tns:Megusta" />
+  <xs:complexType name="MegustaProjection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Megusta">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MegustaProjection" nillable="true" type="tns:MegustaProjection" />
+  <xs:complexType name="EspecificacionUsuarioProjection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EspecificacionUsuario">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EspecificacionUsuarioProjection" nillable="true" type="tns:EspecificacionUsuarioProjection" />
+  <xs:complexType name="ArrayOfEspecificacionUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EspecificacionUsuario" nillable="true" type="tns:EspecificacionUsuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEspecificacionUsuario" nillable="true" type="tns:ArrayOfEspecificacionUsuario" />
+  <xs:complexType name="ContenidoProjection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Contenido">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContenidoProjection" nillable="true" type="tns:ContenidoProjection" />
+  <xs:complexType name="CategoriaTematicaProjection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CategoriaTematica">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategoriaTematicaProjection" nillable="true" type="tns:CategoriaTematicaProjection" />
+  <xs:complexType name="ConvocatoriaProjection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Convocatoria">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConvocatoriaProjection" nillable="true" type="tns:ConvocatoriaProjection" />
+  <xs:complexType name="ArrayOfFuenteWEB">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FuenteWEB" nillable="true" type="tns:FuenteWEB" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFuenteWEB" nillable="true" type="tns:ArrayOfFuenteWEB" />
+  <xs:complexType name="MovimientoProjection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Movimiento">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MovimientoProjection" nillable="true" type="tns:MovimientoProjection" />
+  <xs:complexType name="FuenteWEBProjection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FuenteWEB">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FuenteWEBProjection" nillable="true" type="tns:FuenteWEBProjection" />
+  <xs:complexType name="ArrayOfMovimiento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Movimiento" nillable="true" type="tns:Movimiento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovimiento" nillable="true" type="tns:ArrayOfMovimiento" />
+</xs:schema>

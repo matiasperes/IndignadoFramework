@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://indignado.cloudapp.net:8080/IntegracionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="MensajeChat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="idMensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idRoom" type="xs:int" />
+      <xs:element minOccurs="0" name="mensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="usuarioId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="usuarioNombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="MensajeChat" nillable="true" type="tns:MensajeChat" />
+  <xs:complexType name="MensajeChatProjection">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MensajeChat">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MensajeChatProjection" nillable="true" type="tns:MensajeChatProjection" />
+  <xs:complexType name="ArrayOfMensajeChat">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MensajeChat" nillable="true" type="tns:MensajeChat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMensajeChat" nillable="true" type="tns:ArrayOfMensajeChat" />
+</xs:schema>

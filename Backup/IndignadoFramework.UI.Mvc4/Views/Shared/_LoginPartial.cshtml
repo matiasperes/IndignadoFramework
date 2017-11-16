@@ -1,0 +1,43 @@
+﻿@using Facebook;
+
+@{            
+
+    Uri myurl = Request.Url;
+    Uri redirect = new Uri("http://" + myurl.Authority + "/Account/Facebook");
+    string host = Request.Path;
+    String[] aux = host.Split('/');
+    string fb = "/" + aux[1] + "/Account/Facebook";  
+    var logueado = Session["logueado"];
+    
+    if ((logueado != null && (bool)logueado) && Membership.FindUsersByName((String)Session["emailUs"]).Count > 0)
+    {
+        if (logueado != null && (bool)logueado)
+        {
+            <p id="top-navigation">
+                Hola, @Html.ActionLink((String)Session["emailUs"], "Edit", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Change password" })!<span>|</span>
+                @if (Session["facebook"]== null ||  (bool)Session["facebook"] == false){
+                    @Html.ActionLink("Salir", "LogOff", "Account")
+                }else{
+                    @:Facebook
+                }
+                
+            </p>
+        }
+    }
+    else
+    {
+            <div class="socials">
+                <a title="Facebook" class="facebook" href="@fb">facebook</a>
+				<a title="Twitter" class="twitter" href="#">twitter</a>		
+			</div>
+			<p id="top-navigation">
+    
+            @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", data_dialog_title = "Registo" })<span>|</span>
+            @Html.ActionLink("Ingresar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", data_dialog_title = "Identificación" })
+            </p>
+            
+            
+            //<fb:login-button registration-url="@fb" />
+        
+    }
+}

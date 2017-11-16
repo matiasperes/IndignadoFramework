@@ -1,0 +1,878 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModeloIndignadoFramework.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ModeloIndignadoFrameworkStoreContainer">
+    <EntitySet Name="MovimientoSet" EntityType="ModeloIndignadoFramework.Store.MovimientoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConvocatoriaSet" EntityType="ModeloIndignadoFramework.Store.ConvocatoriaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EspecificacionUsuarioSet" EntityType="ModeloIndignadoFramework.Store.EspecificacionUsuarioSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoriaTematicaSet" EntityType="ModeloIndignadoFramework.Store.CategoriaTematicaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContenidoSet" EntityType="ModeloIndignadoFramework.Store.ContenidoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FuenteWEBSet" EntityType="ModeloIndignadoFramework.Store.FuenteWEBSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MegustaSet" EntityType="ModeloIndignadoFramework.Store.MegustaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MensajeChatSet" EntityType="ModeloIndignadoFramework.Store.MensajeChatSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsuarioConvocatoria" EntityType="ModeloIndignadoFramework.Store.UsuarioConvocatoria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsuarioCategoriaTematica" EntityType="ModeloIndignadoFramework.Store.UsuarioCategoriaTematica" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Inadecuado" EntityType="ModeloIndignadoFramework.Store.Inadecuado" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_UsuarioConvocatoria_Usuario" Association="ModeloIndignadoFramework.Store.FK_UsuarioConvocatoria_Usuario">
+      <End Role="Usuario" EntitySet="EspecificacionUsuarioSet" />
+      <End Role="UsuarioConvocatoria" EntitySet="UsuarioConvocatoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioConvocatoria_Convocatoria" Association="ModeloIndignadoFramework.Store.FK_UsuarioConvocatoria_Convocatoria">
+      <End Role="Convocatoria" EntitySet="ConvocatoriaSet" />
+      <End Role="UsuarioConvocatoria" EntitySet="UsuarioConvocatoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioCategoriaTematica_Usuario" Association="ModeloIndignadoFramework.Store.FK_UsuarioCategoriaTematica_Usuario">
+      <End Role="Usuario" EntitySet="EspecificacionUsuarioSet" />
+      <End Role="UsuarioCategoriaTematica" EntitySet="UsuarioCategoriaTematica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioCategoriaTematica_CategoriaTematica" Association="ModeloIndignadoFramework.Store.FK_UsuarioCategoriaTematica_CategoriaTematica">
+      <End Role="CategoriaTematica" EntitySet="CategoriaTematicaSet" />
+      <End Role="UsuarioCategoriaTematica" EntitySet="UsuarioCategoriaTematica" />
+    </AssociationSet>
+    <AssociationSet Name="ConvocatoriaMovimiento" Association="ModeloIndignadoFramework.Store.ConvocatoriaMovimiento">
+      <End Role="Convocatoria" EntitySet="ConvocatoriaSet" />
+      <End Role="Movimiento" EntitySet="MovimientoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ConvocatoriaCategoriaTematica" Association="ModeloIndignadoFramework.Store.ConvocatoriaCategoriaTematica">
+      <End Role="Convocatoria" EntitySet="ConvocatoriaSet" />
+      <End Role="CategoriaTematica" EntitySet="CategoriaTematicaSet" />
+    </AssociationSet>
+    <AssociationSet Name="ContenidoCategoriaTematica" Association="ModeloIndignadoFramework.Store.ContenidoCategoriaTematica">
+      <End Role="Contenido" EntitySet="ContenidoSet" />
+      <End Role="CategoriaTematica" EntitySet="CategoriaTematicaSet" />
+    </AssociationSet>
+    <AssociationSet Name="ContenidoMegusta" Association="ModeloIndignadoFramework.Store.ContenidoMegusta">
+      <End Role="Contenido" EntitySet="ContenidoSet" />
+      <End Role="Megusta" EntitySet="MegustaSet" />
+    </AssociationSet>
+    <AssociationSet Name="EspecificacionUsuarioMovimiento" Association="ModeloIndignadoFramework.Store.EspecificacionUsuarioMovimiento">
+      <End Role="EspecificacionUsuario" EntitySet="EspecificacionUsuarioSet" />
+      <End Role="Movimiento" EntitySet="MovimientoSet" />
+    </AssociationSet>
+    <AssociationSet Name="MovimientoFuenteWEB" Association="ModeloIndignadoFramework.Store.MovimientoFuenteWEB">
+      <End Role="Movimiento" EntitySet="MovimientoSet" />
+      <End Role="FuenteWEB" EntitySet="FuenteWEBSet" />
+    </AssociationSet>
+    <AssociationSet Name="EspecificacionUsuarioContenido" Association="ModeloIndignadoFramework.Store.EspecificacionUsuarioContenido">
+      <End Role="EspecificacionUsuario" EntitySet="EspecificacionUsuarioSet" />
+      <End Role="Contenido" EntitySet="ContenidoSet" />
+    </AssociationSet>
+    <AssociationSet Name="EspecificacionUsuarioMegusta" Association="ModeloIndignadoFramework.Store.EspecificacionUsuarioMegusta">
+      <End Role="EspecificacionUsuario" EntitySet="EspecificacionUsuarioSet" />
+      <End Role="Megusta" EntitySet="MegustaSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inadecuado_EspecificacionUsuario" Association="ModeloIndignadoFramework.Store.FK_Inadecuado_EspecificacionUsuario">
+      <End Role="EspecificacionUsuario" EntitySet="EspecificacionUsuarioSet" />
+      <End Role="Inadecuado" EntitySet="Inadecuado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inadecuado_Contenido" Association="ModeloIndignadoFramework.Store.FK_Inadecuado_Contenido">
+      <End Role="Contenido" EntitySet="ContenidoSet" />
+      <End Role="Inadecuado" EntitySet="Inadecuado" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MovimientoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UbicacionLatitud" Type="float" Nullable="true" />
+    <Property Name="UbicacionLongitud" Type="float" Nullable="true" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Logo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Estilo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="M" Type="int" Nullable="false" />
+    <Property Name="N" Type="int" Nullable="false" />
+    <Property Name="X" Type="int" Nullable="false" />
+    <Property Name="Z" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConvocatoriaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Inicio" Type="datetime" Nullable="false" />
+    <Property Name="UbicacionLatitud" Type="float" Nullable="false" />
+    <Property Name="UbicacionLongitud" Type="float" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Quorum" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MovimientoId" Type="int" Nullable="false" />
+    <Property Name="CategoriaTematicaId" Type="int" Nullable="false" />
+    <Property Name="CantUsuariosConfirmados" Type="int" Nullable="false" />
+    <Property Name="Suspendida" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EspecificacionUsuarioSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UbicacionLatitud" Type="float" Nullable="false" />
+    <Property Name="UbicacionLongitud" Type="float" Nullable="false" />
+    <Property Name="Membership" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MovimientoId" Type="int" Nullable="false" />
+    <Property Name="BajasContenido" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoriaTematicaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContenidoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ubicacion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaPosteado" Type="datetime" Nullable="false" />
+    <Property Name="CategoriaTematicaId" Type="int" Nullable="false" />
+    <Property Name="Inadecuado" Type="int" Nullable="false" />
+    <Property Name="EspecificacionUsuarioId" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CantMeGusta" Type="int" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FuenteWEBSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MovimientoId" Type="int" Nullable="false" />
+    <Property Name="UrlDll" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MegustaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="ContenidoId" Type="int" Nullable="false" />
+    <Property Name="EspecificacionUsuarioId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MensajeChatSet">
+    <Key>
+      <PropertyRef Name="idRoom" />
+      <PropertyRef Name="idMensaje" />
+    </Key>
+    <Property Name="idRoom" Type="int" Nullable="false" />
+    <Property Name="idMensaje" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="fecha" Type="datetime" Nullable="true" />
+    <Property Name="mensaje" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="usuarioId" Type="int" Nullable="true" />
+    <Property Name="usuarioNombre" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UsuarioConvocatoria">
+    <Key>
+      <PropertyRef Name="UsuariosConfirmados_Id" />
+      <PropertyRef Name="AsisteAConvocatorias_Id" />
+    </Key>
+    <Property Name="UsuariosConfirmados_Id" Type="int" Nullable="false" />
+    <Property Name="AsisteAConvocatorias_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioCategoriaTematica">
+    <Key>
+      <PropertyRef Name="Usuarios_Id" />
+      <PropertyRef Name="CategoriasTematicas_Id" />
+    </Key>
+    <Property Name="Usuarios_Id" Type="int" Nullable="false" />
+    <Property Name="CategoriasTematicas_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Inadecuado">
+    <Key>
+      <PropertyRef Name="Inadecuados_Id" />
+      <PropertyRef Name="Contenido_Id" />
+    </Key>
+    <Property Name="Inadecuados_Id" Type="int" Nullable="false" />
+    <Property Name="Contenido_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ConvocatoriaMovimiento">
+    <End Role="Convocatoria" Type="ModeloIndignadoFramework.Store.ConvocatoriaSet" Multiplicity="*" />
+    <End Role="Movimiento" Type="ModeloIndignadoFramework.Store.MovimientoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Movimiento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Convocatoria">
+        <PropertyRef Name="MovimientoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConvocatoriaCategoriaTematica">
+    <End Role="Convocatoria" Type="ModeloIndignadoFramework.Store.ConvocatoriaSet" Multiplicity="*" />
+    <End Role="CategoriaTematica" Type="ModeloIndignadoFramework.Store.CategoriaTematicaSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriaTematica">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Convocatoria">
+        <PropertyRef Name="CategoriaTematicaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContenidoCategoriaTematica">
+    <End Role="Contenido" Type="ModeloIndignadoFramework.Store.ContenidoSet" Multiplicity="*" />
+    <End Role="CategoriaTematica" Type="ModeloIndignadoFramework.Store.CategoriaTematicaSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriaTematica">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contenido">
+        <PropertyRef Name="CategoriaTematicaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContenidoMegusta">
+    <End Role="Contenido" Type="ModeloIndignadoFramework.Store.ContenidoSet" Multiplicity="1" />
+    <End Role="Megusta" Type="ModeloIndignadoFramework.Store.MegustaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contenido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Megusta">
+        <PropertyRef Name="ContenidoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EspecificacionUsuarioMovimiento">
+    <End Role="EspecificacionUsuario" Type="ModeloIndignadoFramework.Store.EspecificacionUsuarioSet" Multiplicity="*" />
+    <End Role="Movimiento" Type="ModeloIndignadoFramework.Store.MovimientoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Movimiento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EspecificacionUsuario">
+        <PropertyRef Name="MovimientoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MovimientoFuenteWEB">
+    <End Role="Movimiento" Type="ModeloIndignadoFramework.Store.MovimientoSet" Multiplicity="1" />
+    <End Role="FuenteWEB" Type="ModeloIndignadoFramework.Store.FuenteWEBSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movimiento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FuenteWEB">
+        <PropertyRef Name="MovimientoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EspecificacionUsuarioContenido">
+    <End Role="EspecificacionUsuario" Type="ModeloIndignadoFramework.Store.EspecificacionUsuarioSet" Multiplicity="1" />
+    <End Role="Contenido" Type="ModeloIndignadoFramework.Store.ContenidoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EspecificacionUsuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contenido">
+        <PropertyRef Name="EspecificacionUsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EspecificacionUsuarioMegusta">
+    <End Role="EspecificacionUsuario" Type="ModeloIndignadoFramework.Store.EspecificacionUsuarioSet" Multiplicity="1" />
+    <End Role="Megusta" Type="ModeloIndignadoFramework.Store.MegustaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EspecificacionUsuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Megusta">
+        <PropertyRef Name="EspecificacionUsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioConvocatoria_Usuario">
+    <End Role="Usuario" Type="ModeloIndignadoFramework.Store.EspecificacionUsuarioSet" Multiplicity="1" />
+    <End Role="UsuarioConvocatoria" Type="ModeloIndignadoFramework.Store.UsuarioConvocatoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsuarioConvocatoria">
+        <PropertyRef Name="UsuariosConfirmados_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioConvocatoria_Convocatoria">
+    <End Role="UsuarioConvocatoria" Type="ModeloIndignadoFramework.Store.UsuarioConvocatoria" Multiplicity="*" />
+    <End Role="Convocatoria" Type="ModeloIndignadoFramework.Store.ConvocatoriaSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Convocatoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsuarioConvocatoria">
+        <PropertyRef Name="AsisteAConvocatorias_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioCategoriaTematica_Usuario">
+    <End Role="Usuario" Type="ModeloIndignadoFramework.Store.EspecificacionUsuarioSet" Multiplicity="1" />
+    <End Role="UsuarioCategoriaTematica" Type="ModeloIndignadoFramework.Store.UsuarioCategoriaTematica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsuarioCategoriaTematica">
+        <PropertyRef Name="Usuarios_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioCategoriaTematica_CategoriaTematica">
+    <End Role="UsuarioCategoriaTematica" Type="ModeloIndignadoFramework.Store.UsuarioCategoriaTematica" Multiplicity="*" />
+    <End Role="CategoriaTematica" Type="ModeloIndignadoFramework.Store.CategoriaTematicaSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriaTematica">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsuarioCategoriaTematica">
+        <PropertyRef Name="CategoriasTematicas_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inadecuado_EspecificacionUsuario">
+    <End Role="EspecificacionUsuario" Type="ModeloIndignadoFramework.Store.EspecificacionUsuarioSet" Multiplicity="1" />
+    <End Role="Inadecuado" Type="ModeloIndignadoFramework.Store.Inadecuado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EspecificacionUsuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inadecuado">
+        <PropertyRef Name="Inadecuados_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inadecuado_Contenido">
+    <End Role="Inadecuado" Type="ModeloIndignadoFramework.Store.Inadecuado" Multiplicity="*" />
+    <End Role="Contenido" Type="ModeloIndignadoFramework.Store.ContenidoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Contenido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inadecuado">
+        <PropertyRef Name="Contenido_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModeloIndignadoFramework" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="ContextoIndignadoFramework" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="MovimientoSet" EntityType="ModeloIndignadoFramework.Movimiento" />
+          <EntitySet Name="ConvocatoriaSet" EntityType="ModeloIndignadoFramework.Convocatoria" />
+          <EntitySet Name="EspecificacionUsuarioSet" EntityType="ModeloIndignadoFramework.EspecificacionUsuario" />
+          <AssociationSet Name="UsuarioConvocatoria" Association="ModeloIndignadoFramework.UsuarioConvocatoria">
+            <End EntitySet="EspecificacionUsuarioSet" Role="Usuario" />
+            <End EntitySet="ConvocatoriaSet" Role="Convocatoria" />
+          </AssociationSet>
+          <EntitySet Name="CategoriaTematicaSet" EntityType="ModeloIndignadoFramework.CategoriaTematica" />
+          <AssociationSet Name="UsuarioCategoriaTematica" Association="ModeloIndignadoFramework.UsuarioCategoriaTematica">
+            <End Role="Usuario" EntitySet="EspecificacionUsuarioSet" />
+            <End Role="CategoriaTematica" EntitySet="CategoriaTematicaSet" />
+          </AssociationSet>
+          <EntitySet Name="ContenidoSet" EntityType="ModeloIndignadoFramework.Contenido" />
+          <EntitySet Name="FuenteWEBSet" EntityType="ModeloIndignadoFramework.FuenteWEB" />
+          <EntitySet Name="MegustaSet" EntityType="ModeloIndignadoFramework.Megusta" />
+          <AssociationSet Name="ConvocatoriaMovimiento" Association="ModeloIndignadoFramework.ConvocatoriaMovimiento">
+            <End Role="Convocatoria" EntitySet="ConvocatoriaSet" />
+            <End Role="Movimiento" EntitySet="MovimientoSet" />
+          </AssociationSet>
+          <AssociationSet Name="ConvocatoriaCategoriaTematica" Association="ModeloIndignadoFramework.ConvocatoriaCategoriaTematica">
+            <End Role="Convocatoria" EntitySet="ConvocatoriaSet" />
+            <End Role="CategoriaTematica" EntitySet="CategoriaTematicaSet" />
+          </AssociationSet>
+          <AssociationSet Name="ContenidoCategoriaTematica" Association="ModeloIndignadoFramework.ContenidoCategoriaTematica">
+            <End Role="Contenido" EntitySet="ContenidoSet" />
+            <End Role="CategoriaTematica" EntitySet="CategoriaTematicaSet" />
+          </AssociationSet>
+          <AssociationSet Name="ContenidoMegusta" Association="ModeloIndignadoFramework.ContenidoMegusta">
+            <End Role="Contenido" EntitySet="ContenidoSet" />
+            <End Role="Megusta" EntitySet="MegustaSet" />
+          </AssociationSet>
+          <AssociationSet Name="EspecificacionUsuarioMovimiento" Association="ModeloIndignadoFramework.EspecificacionUsuarioMovimiento">
+            <End Role="EspecificacionUsuario" EntitySet="EspecificacionUsuarioSet" />
+            <End Role="Movimiento" EntitySet="MovimientoSet" />
+          </AssociationSet>
+          <AssociationSet Name="MovimientoFuenteWEB" Association="ModeloIndignadoFramework.MovimientoFuenteWEB">
+            <End Role="Movimiento" EntitySet="MovimientoSet" />
+            <End Role="FuenteWEB" EntitySet="FuenteWEBSet" />
+          </AssociationSet>
+          <AssociationSet Name="EspecificacionUsuarioContenido" Association="ModeloIndignadoFramework.EspecificacionUsuarioContenido">
+            <End Role="EspecificacionUsuario" EntitySet="EspecificacionUsuarioSet" />
+            <End Role="Contenido" EntitySet="ContenidoSet" />
+          </AssociationSet>
+          <AssociationSet Name="EspecificacionUsuarioMegusta" Association="ModeloIndignadoFramework.EspecificacionUsuarioMegusta">
+            <End Role="EspecificacionUsuario" EntitySet="EspecificacionUsuarioSet" />
+            <End Role="Megusta" EntitySet="MegustaSet" />
+          </AssociationSet>
+          <AssociationSet Name="Inadecuado" Association="ModeloIndignadoFramework.Inadecuado">
+            <End Role="EspecificacionUsuario" EntitySet="EspecificacionUsuarioSet" />
+            <End Role="Contenido" EntitySet="ContenidoSet" />
+          </AssociationSet>
+          <EntitySet Name="MensajeChatSet" EntityType="ModeloIndignadoFramework.MensajeChat" />
+          </EntityContainer>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="UbicacionLatitud" Nullable="true" />
+          <Property Type="Double" Name="UbicacionLongitud" Nullable="true" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Logo" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Estilo" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="M" Nullable="false" />
+          <Property Type="Int32" Name="N" Nullable="false" />
+          <Property Type="Int32" Name="X" Nullable="false" />
+          <Property Type="Int32" Name="Z" Nullable="false" />
+          <NavigationProperty Name="Convocatorias" Relationship="ModeloIndignadoFramework.ConvocatoriaMovimiento" FromRole="Movimiento" ToRole="Convocatoria" />
+          <NavigationProperty Name="Usuarios" Relationship="ModeloIndignadoFramework.EspecificacionUsuarioMovimiento" FromRole="Movimiento" ToRole="EspecificacionUsuario" />
+          <NavigationProperty Name="FuentesWEB" Relationship="ModeloIndignadoFramework.MovimientoFuenteWEB" FromRole="Movimiento" ToRole="FuenteWEB" />
+        </EntityType>
+        <EntityType Name="Convocatoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Inicio" Nullable="false" />
+          <Property Type="Double" Name="UbicacionLatitud" Nullable="false" />
+          <Property Type="Double" Name="UbicacionLongitud" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
+          <NavigationProperty Name="UsuariosConfirmados" Relationship="ModeloIndignadoFramework.UsuarioConvocatoria" FromRole="Convocatoria" ToRole="Usuario" />
+          <Property Type="Int32" Name="Quorum" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Movimiento" Relationship="ModeloIndignadoFramework.ConvocatoriaMovimiento" FromRole="Convocatoria" ToRole="Movimiento" />
+          <Property Type="Int32" Name="MovimientoId" Nullable="false" />
+          <NavigationProperty Name="CategoriaTematica" Relationship="ModeloIndignadoFramework.ConvocatoriaCategoriaTematica" FromRole="Convocatoria" ToRole="CategoriaTematica" />
+          <Property Type="Int32" Name="CategoriaTematicaId" Nullable="false" />
+          <Property Type="Int32" Name="CantUsuariosConfirmados" Nullable="false" />
+          <Property Type="Boolean" Name="Suspendida" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EspecificacionUsuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="UbicacionLatitud" Nullable="false" />
+          <Property Type="Double" Name="UbicacionLongitud" Nullable="false" />
+          <NavigationProperty Name="AsisteAConvocatorias" Relationship="ModeloIndignadoFramework.UsuarioConvocatoria" FromRole="Usuario" ToRole="Convocatoria" />
+          <NavigationProperty Name="CategoriasTematicas" Relationship="ModeloIndignadoFramework.UsuarioCategoriaTematica" FromRole="Usuario" ToRole="CategoriaTematica" />
+          <Property Type="String" Name="Membership" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" />
+          <NavigationProperty Name="Movimiento" Relationship="ModeloIndignadoFramework.EspecificacionUsuarioMovimiento" FromRole="EspecificacionUsuario" ToRole="Movimiento" />
+          <Property Type="Int32" Name="MovimientoId" Nullable="false" />
+          <NavigationProperty Name="Contenidos" Relationship="ModeloIndignadoFramework.EspecificacionUsuarioContenido" FromRole="EspecificacionUsuario" ToRole="Contenido" />
+          <NavigationProperty Name="Megusta" Relationship="ModeloIndignadoFramework.EspecificacionUsuarioMegusta" FromRole="EspecificacionUsuario" ToRole="Megusta" />
+          <NavigationProperty Name="Contenido" Relationship="ModeloIndignadoFramework.Inadecuado" FromRole="EspecificacionUsuario" ToRole="Contenido" />
+          <Property Type="Int32" Name="BajasContenido" Nullable="false" />
+        </EntityType>
+        <Association Name="UsuarioConvocatoria">
+          <End Type="ModeloIndignadoFramework.EspecificacionUsuario" Multiplicity="*" Role="Usuario" />
+          <End Type="ModeloIndignadoFramework.Convocatoria" Multiplicity="*" Role="Convocatoria" />
+        </Association>
+        <EntityType Name="CategoriaTematica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" />
+          <NavigationProperty Name="Usuarios" Relationship="ModeloIndignadoFramework.UsuarioCategoriaTematica" FromRole="CategoriaTematica" ToRole="Usuario" />
+          <NavigationProperty Name="Convocatorias" Relationship="ModeloIndignadoFramework.ConvocatoriaCategoriaTematica" FromRole="CategoriaTematica" ToRole="Convocatoria" />
+          <NavigationProperty Name="Contenidos" Relationship="ModeloIndignadoFramework.ContenidoCategoriaTematica" FromRole="CategoriaTematica" ToRole="Contenido" />
+        </EntityType>
+        <Association Name="UsuarioCategoriaTematica">
+          <End Type="ModeloIndignadoFramework.EspecificacionUsuario" Role="Usuario" Multiplicity="*" />
+          <End Type="ModeloIndignadoFramework.CategoriaTematica" Role="CategoriaTematica" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Contenido">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Ubicacion" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Tipo" Nullable="false" />
+          <Property Type="DateTime" Name="FechaPosteado" Nullable="false" />
+          <NavigationProperty Name="CategoriaTematica" Relationship="ModeloIndignadoFramework.ContenidoCategoriaTematica" FromRole="Contenido" ToRole="CategoriaTematica" />
+          <Property Type="Int32" Name="CategoriaTematicaId" Nullable="false" />
+          <NavigationProperty Name="Megusta" Relationship="ModeloIndignadoFramework.ContenidoMegusta" FromRole="Contenido" ToRole="Megusta" />
+          <Property Type="Int32" Name="Inadecuado" Nullable="false" />
+          <NavigationProperty Name="EspecificacionUsuario" Relationship="ModeloIndignadoFramework.EspecificacionUsuarioContenido" FromRole="Contenido" ToRole="EspecificacionUsuario" />
+          <Property Type="Int32" Name="EspecificacionUsuarioId" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Inadecuados" Relationship="ModeloIndignadoFramework.Inadecuado" FromRole="Contenido" ToRole="EspecificacionUsuario" />
+          <Property Type="Int32" Name="CantMeGusta" Nullable="false" />
+          <Property Type="Boolean" Name="Habilitado" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuenteWEB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Movimiento" Relationship="ModeloIndignadoFramework.MovimientoFuenteWEB" FromRole="FuenteWEB" ToRole="Movimiento" />
+          <Property Type="Int32" Name="MovimientoId" Nullable="false" />
+          <Property Type="String" Name="UrlDll" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Megusta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <NavigationProperty Name="Contenido" Relationship="ModeloIndignadoFramework.ContenidoMegusta" FromRole="Megusta" ToRole="Contenido" />
+          <Property Type="Int32" Name="ContenidoId" Nullable="false" />
+          <NavigationProperty Name="EspecificacionUsuario" Relationship="ModeloIndignadoFramework.EspecificacionUsuarioMegusta" FromRole="Megusta" ToRole="EspecificacionUsuario" />
+          <Property Type="Int32" Name="EspecificacionUsuarioId" Nullable="false" />
+        </EntityType>
+        <Association Name="ConvocatoriaMovimiento">
+          <End Type="ModeloIndignadoFramework.Convocatoria" Role="Convocatoria" Multiplicity="*" />
+          <End Type="ModeloIndignadoFramework.Movimiento" Role="Movimiento" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Convocatoria">
+              <PropertyRef Name="MovimientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ConvocatoriaCategoriaTematica">
+          <End Type="ModeloIndignadoFramework.Convocatoria" Role="Convocatoria" Multiplicity="*" />
+          <End Type="ModeloIndignadoFramework.CategoriaTematica" Role="CategoriaTematica" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaTematica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Convocatoria">
+              <PropertyRef Name="CategoriaTematicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContenidoCategoriaTematica">
+          <End Type="ModeloIndignadoFramework.Contenido" Role="Contenido" Multiplicity="*" />
+          <End Type="ModeloIndignadoFramework.CategoriaTematica" Role="CategoriaTematica" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaTematica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contenido">
+              <PropertyRef Name="CategoriaTematicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContenidoMegusta">
+          <End Type="ModeloIndignadoFramework.Contenido" Role="Contenido" Multiplicity="1" />
+          <End Type="ModeloIndignadoFramework.Megusta" Role="Megusta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contenido">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Megusta">
+              <PropertyRef Name="ContenidoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EspecificacionUsuarioMovimiento">
+          <End Type="ModeloIndignadoFramework.EspecificacionUsuario" Role="EspecificacionUsuario" Multiplicity="*" />
+          <End Type="ModeloIndignadoFramework.Movimiento" Role="Movimiento" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EspecificacionUsuario">
+              <PropertyRef Name="MovimientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MovimientoFuenteWEB">
+          <End Type="ModeloIndignadoFramework.Movimiento" Role="Movimiento" Multiplicity="1" />
+          <End Type="ModeloIndignadoFramework.FuenteWEB" Role="FuenteWEB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FuenteWEB">
+              <PropertyRef Name="MovimientoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EspecificacionUsuarioContenido">
+          <End Type="ModeloIndignadoFramework.EspecificacionUsuario" Role="EspecificacionUsuario" Multiplicity="1" />
+          <End Type="ModeloIndignadoFramework.Contenido" Role="Contenido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EspecificacionUsuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contenido">
+              <PropertyRef Name="EspecificacionUsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EspecificacionUsuarioMegusta">
+          <End Type="ModeloIndignadoFramework.EspecificacionUsuario" Role="EspecificacionUsuario" Multiplicity="1" />
+          <End Type="ModeloIndignadoFramework.Megusta" Role="Megusta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EspecificacionUsuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Megusta">
+              <PropertyRef Name="EspecificacionUsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Inadecuado">
+          <End Type="ModeloIndignadoFramework.EspecificacionUsuario" Role="EspecificacionUsuario" Multiplicity="*" />
+          <End Type="ModeloIndignadoFramework.Contenido" Role="Contenido" Multiplicity="*" />
+        </Association>
+        <EntityType Name="MensajeChat">
+          <Key>
+            <PropertyRef Name="idRoom" />
+            <PropertyRef Name="idMensaje" />
+          </Key>
+          <Property Type="Int32" Name="idRoom" Nullable="false" />
+          <Property Type="String" Name="idMensaje" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="String" Name="mensaje" Nullable="true" />
+          <Property Type="Int32" Name="usuarioId" Nullable="true" />
+          <Property Type="String" Name="usuarioNombre" Nullable="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloIndignadoFrameworkStoreContainer" CdmEntityContainer="ContextoIndignadoFramework">
+    <EntitySetMapping Name="MovimientoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloIndignadoFramework.Movimiento)">
+        <MappingFragment StoreEntitySet="MovimientoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="UbicacionLatitud" ColumnName="UbicacionLatitud" />
+          <ScalarProperty Name="UbicacionLongitud" ColumnName="UbicacionLongitud" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Estilo" ColumnName="Estilo" />
+          <ScalarProperty Name="M" ColumnName="M" />
+          <ScalarProperty Name="N" ColumnName="N" />
+          <ScalarProperty Name="X" ColumnName="X" />
+          <ScalarProperty Name="Z" ColumnName="Z" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConvocatoriaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloIndignadoFramework.Convocatoria)">
+        <MappingFragment StoreEntitySet="ConvocatoriaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+          <ScalarProperty Name="UbicacionLatitud" ColumnName="UbicacionLatitud" />
+          <ScalarProperty Name="UbicacionLongitud" ColumnName="UbicacionLongitud" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Quorum" ColumnName="Quorum" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="MovimientoId" ColumnName="MovimientoId" />
+          <ScalarProperty Name="CategoriaTematicaId" ColumnName="CategoriaTematicaId" />
+          <ScalarProperty Name="CantUsuariosConfirmados" ColumnName="CantUsuariosConfirmados" />
+          <ScalarProperty Name="Suspendida" ColumnName="Suspendida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EspecificacionUsuarioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloIndignadoFramework.EspecificacionUsuario)">
+        <MappingFragment StoreEntitySet="EspecificacionUsuarioSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UbicacionLatitud" ColumnName="UbicacionLatitud" />
+          <ScalarProperty Name="UbicacionLongitud" ColumnName="UbicacionLongitud" />
+          <ScalarProperty Name="Membership" ColumnName="Membership" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="MovimientoId" ColumnName="MovimientoId" />
+          <ScalarProperty Name="BajasContenido" ColumnName="BajasContenido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoriaTematicaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloIndignadoFramework.CategoriaTematica)">
+        <MappingFragment StoreEntitySet="CategoriaTematicaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContenidoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloIndignadoFramework.Contenido)">
+        <MappingFragment StoreEntitySet="ContenidoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="FechaPosteado" ColumnName="FechaPosteado" />
+          <ScalarProperty Name="CategoriaTematicaId" ColumnName="CategoriaTematicaId" />
+          <ScalarProperty Name="Inadecuado" ColumnName="Inadecuado" />
+          <ScalarProperty Name="EspecificacionUsuarioId" ColumnName="EspecificacionUsuarioId" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="CantMeGusta" ColumnName="CantMeGusta" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FuenteWEBSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloIndignadoFramework.FuenteWEB)">
+        <MappingFragment StoreEntitySet="FuenteWEBSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="MovimientoId" ColumnName="MovimientoId" />
+          <ScalarProperty Name="UrlDll" ColumnName="UrlDll" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MegustaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloIndignadoFramework.Megusta)">
+        <MappingFragment StoreEntitySet="MegustaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="ContenidoId" ColumnName="ContenidoId" />
+          <ScalarProperty Name="EspecificacionUsuarioId" ColumnName="EspecificacionUsuarioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MensajeChatSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloIndignadoFramework.MensajeChat)">
+        <MappingFragment StoreEntitySet="MensajeChatSet">
+          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="idMensaje" ColumnName="idMensaje" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+          <ScalarProperty Name="usuarioId" ColumnName="usuarioId" />
+          <ScalarProperty Name="usuarioNombre" ColumnName="usuarioNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UsuarioConvocatoria" TypeName="ModeloIndignadoFramework.UsuarioConvocatoria" StoreEntitySet="UsuarioConvocatoria">
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="Id" ColumnName="UsuariosConfirmados_Id" />
+      </EndProperty>
+      <EndProperty Name="Convocatoria">
+        <ScalarProperty Name="Id" ColumnName="AsisteAConvocatorias_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UsuarioCategoriaTematica" TypeName="ModeloIndignadoFramework.UsuarioCategoriaTematica" StoreEntitySet="UsuarioCategoriaTematica">
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="Id" ColumnName="Usuarios_Id" />
+      </EndProperty>
+      <EndProperty Name="CategoriaTematica">
+        <ScalarProperty Name="Id" ColumnName="CategoriasTematicas_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Inadecuado" TypeName="ModeloIndignadoFramework.Inadecuado" StoreEntitySet="Inadecuado">
+      <EndProperty Name="EspecificacionUsuario">
+        <ScalarProperty Name="Id" ColumnName="Inadecuados_Id" />
+      </EndProperty>
+      <EndProperty Name="Contenido">
+        <ScalarProperty Name="Id" ColumnName="Contenido_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Model" ZoomLevel="73" >
+        <EntityTypeShape EntityType="ModeloIndignadoFramework.Movimiento" Width="1.75" PointX="0.625" PointY="2.75" Height="3.7109993489583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloIndignadoFramework.Convocatoria" Width="1.875" PointX="4" PointY="5.75" Height="3.7109993489583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloIndignadoFramework.EspecificacionUsuario" Width="1.875" PointX="5.625" PointY="2.25" Height="3.5186979166666656" IsExpanded="true" />
+        <AssociationConnector ManuallyRouted="false" Association="ModeloIndignadoFramework.UsuarioConvocatoria">
+          <ConnectorPoint PointX="5.625" PointY="3.9999995" />
+          <ConnectorPoint PointX="4.8124994999999995" PointY="3.9999995" />
+          <ConnectorPoint PointX="4.8124994999999995" PointY="5.75" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ModeloIndignadoFramework.CategoriaTematica" Width="2.625" PointX="8.625" PointY="6.25" Height="2.1725878906249996" />
+        <AssociationConnector Association="ModeloIndignadoFramework.UsuarioCategoriaTematica" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="4.2867006261225464" />
+          <ConnectorPoint PointX="9.4218731250000012" PointY="4.2867006261225464" />
+          <ConnectorPoint PointX="9.4218731250000012" PointY="6.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ModeloIndignadoFramework.Contenido" Width="2" PointX="12.75" PointY="2.25" Height="3.7109993489583317" />
+        <EntityTypeShape EntityType="ModeloIndignadoFramework.FuenteWEB" Width="1.5" PointX="0.875" PointY="7.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="ModeloIndignadoFramework.Megusta" Width="2.5" PointX="11.875" PointY="6.25" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="ModeloIndignadoFramework.ConvocatoriaMovimiento">
+          <ConnectorPoint PointX="4" PointY="6.1054996744791659" />
+          <ConnectorPoint PointX="2.375" PointY="6.1054996744791659" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloIndignadoFramework.ConvocatoriaCategoriaTematica">
+          <ConnectorPoint PointX="5.875" PointY="7.3362939453125" />
+          <ConnectorPoint PointX="8.625" PointY="7.3362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloIndignadoFramework.ContenidoCategoriaTematica">
+          <ConnectorPoint PointX="12.75" PointY="3.5711810740183583" />
+          <ConnectorPoint PointX="10.3671890625" PointY="3.5711810740183583" />
+          <ConnectorPoint PointX="10.3671890625" PointY="6.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloIndignadoFramework.ContenidoMegusta">
+          <ConnectorPoint PointX="13.5625" PointY="5.9609993489583317" />
+          <ConnectorPoint PointX="13.5625" PointY="6.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloIndignadoFramework.EspecificacionUsuarioMovimiento">
+          <ConnectorPoint PointX="5.625" PointY="4.21875" />
+          <ConnectorPoint PointX="4.8958328333333325" PointY="4.2187499999999991" />
+          <ConnectorPoint PointX="4.7291661666666664" PointY="4.21875" />
+          <ConnectorPoint PointX="2.375" PointY="4.21875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloIndignadoFramework.MovimientoFuenteWEB">
+          <ConnectorPoint PointX="1.625" PointY="6.4609993489583326" />
+          <ConnectorPoint PointX="1.625" PointY="7.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloIndignadoFramework.EspecificacionUsuarioContenido">
+          <ConnectorPoint PointX="7.5" PointY="5.0589467713946057" />
+          <ConnectorPoint PointX="9.3385397916666673" PointY="5.0589467713946048" />
+          <ConnectorPoint PointX="9.5052064583333351" PointY="5.0589467713946057" />
+          <ConnectorPoint PointX="10.283855729166666" PointY="5.0589467713946048" />
+          <ConnectorPoint PointX="10.450522395833334" PointY="5.0589467713946057" />
+          <ConnectorPoint PointX="12.75" PointY="5.0589467713946057" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloIndignadoFramework.EspecificacionUsuarioMegusta" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="5.7686979166666656" />
+          <ConnectorPoint PointX="7.875" PointY="6.1436979166666656" />
+          <ConnectorPoint PointX="7.875" PointY="5.875" />
+          <ConnectorPoint PointX="9.3385397916666673" PointY="5.8749999999999991" />
+          <ConnectorPoint PointX="9.5052064583333351" PointY="5.875" />
+          <ConnectorPoint PointX="10.283855729166666" PointY="5.8749999999999991" />
+          <ConnectorPoint PointX="10.450522395833334" PointY="5.875" />
+          <ConnectorPoint PointX="11.5" PointY="5.875" />
+          <ConnectorPoint PointX="11.875" PointY="6.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloIndignadoFramework.Inadecuado">
+          <ConnectorPoint PointX="7.5" PointY="2.8480905370091794" />
+          <ConnectorPoint PointX="12.75" PointY="2.8480905370091794" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ModeloIndignadoFramework.MensajeChat" Width="1.5" PointX="16.25" PointY="2.375" Height="2.1725878906249996" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

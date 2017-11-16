@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language=C# Service="IndignadoFramework.Services.FrontOfficeService" Factory="System.ServiceModel.Activation.ServiceHostFactory" %>

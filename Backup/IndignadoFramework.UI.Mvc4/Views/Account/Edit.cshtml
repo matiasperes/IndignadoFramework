@@ -1,0 +1,157 @@
+﻿@model IndignadoFramework.UI.Mvc4.Models.EditModel
+@using IndignadoFramework.UI.Mvc4.Models;
+@using IndignadoFramework.Entities;
+@{
+    ViewBag.Title = "Edit";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script type="text/javascript">
+          var map = null;
+          var click;
+          function getMap() {
+              map = new Microsoft.Maps.Map(document.getElementById('myMap'), { credentials: 'AjKX5fPclkvH3YTYhLImWMour1KISHMrcFVBrXzVsjqwMLiWobOq83esCN1ra0Q0' });
+          }
+
+          function mapClickEventHandler() {
+              click = Microsoft.Maps.Events.addHandler(map, 'click', displayInfo);
+              alert('Perform action on map to fire this event');
+          }
+          function detachMapClickEventHandler() {
+              Microsoft.Maps.Events.removeHandler(click);
+              alert('event detached');
+          }
+          displayInfo = function (e) {
+              var output = document.getElementById("output");
+              if (!output) {
+                  output = document.createElement("div");
+                  output.id = "output";
+                  document.body.appendChild(output);
+              }
+              output.innerHTML = "Event info - " + e.eventName + "<br><br>"
+                           + "Window:" + e.originalEvent.screenX + "(x) " + e.originalEvent.screenY + "(y)<br>"
+                           + "client:" + e.originalEvent.clientX + "(x) " + e.originalEvent.clientY + "(y)<br>"
+                           + "Keychar:" + e.originalEvent.keyCode + "<br>"
+                           + "keys  :" + e.originalEvent.altKey + "(alt) " + e.originalEvent.ctrlKey + "(ctrl) " + e.originalEvent.shiftKey + "(shift)<br>";
+          };
+
+          function setView() {
+              if ("@Model.latitud".indexOf(",") != -1 || "@Model.longitud".indexOf(",") != -1) {
+                  var valueLatitude = "@Model.latitud".split(",");
+                  var valueLongitud = "@Model.longitud".split(",");
+
+                  map.setView({ zoom: 12, center: new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])) });
+              } else {
+                  map.setView({ zoom: 12, center: new Microsoft.Maps.Location(parseFloat("@Model.latitud"), parseFloat("@Model.longitud")) });
+              }
+          }
+
+          endDragDetails = function (e) {
+
+              var $latitud = $('#latitud');
+              var valueLatitude = $latitud.val();
+              var $longitud = $('#longitud');
+              var valueLongitud = $longitud.val();
+
+              valueLatitude = e.entity.getLocation().latitude.toString();
+              $latitud.val(valueLatitude);
+              valueLongitud = e.entity.getLocation().longitude.toString();
+              $longitud.val(valueLongitud);
+
+          };
+
+          function addPinPin() {
+              var pushpinOptions = { draggable: true };
+
+              if ("@Model.latitud".indexOf(",") != -1 || "@Model.longitud".indexOf(",") != -1){
+                  var valueLatitude = "@Model.latitud".split(",");
+                  var valueLongitud = "@Model.longitud".split(",");
+
+                  var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])), pushpinOptions);
+                  var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+                  map.entities.push(pushpin);
+              } else {
+                  var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat("@Model.latitud"), parseFloat("@Model.longitud")), pushpinOptions);
+                  var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+                  map.entities.push(pushpin);
+              }
+              
+          }
+
+
+
+          $(document).ready(function () { getMap(); setView(); });
+          $(window).load(function () { addPinPin(); });
+
+
+
+</script>
+
+<div class="post">
+<div class="convocatoria">
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Editar Perfil</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        
+        @Html.HiddenFor(model => model.Email)
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-label">
+           <h3> @Model.Email</h3>
+        </div>
+        <br />
+        <fieldset>
+        <legend>Ubicación Geografica</legend>
+        <input type="hidden" id="latitud" name="latitud" value="@Model.latitud" />
+
+        <input type="hidden" id="longitud" name="longitud" value="@Model.longitud" />
+
+        <div> 
+            <div id='myMap' style="position:relative; width:400px; height:400px;"></div>
+            <div id='output'> </div>
+        </div>
+        </fieldset>
+        <br />
+            <fieldset>
+        <legend>Seleccione las categorias tematicas de su interes</legend>
+            @{
+    CategoriaTematica[] categs = ViewBag.categs;
+    if (categs != null)
+    {
+        for (var i = 0; i < categs.Length; i++)
+        {
+
+                        <div class="editor-label">@Html.CheckBox(categs[i].Nombre)  @Html.Label(categs[i].Nombre)  </div>
+                    
+        }
+    }
+             }
+    </fieldset>
+        <p>
+        <input class="boton" type="submit" value="Confirmar" />
+    </p>
+    </fieldset>
+}
+        @if (Session["facebook"] == null || (bool)Session["facebook"] == false)
+        {
+        <div >
+            @Html.ActionLink("Cambiar contraseña", "ChangePassword")
+        </div>
+        }
+   </div>
+        </div>

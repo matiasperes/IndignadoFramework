@@ -1,0 +1,62 @@
+﻿@model IEnumerable<IndignadoFramework.Entities.Contenido>
+
+@{
+    ViewBag.Title = "ContenidosInadecuados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Contenidos Inadecuados</h2>
+<br />
+<br />
+<table>
+    <tr>
+        <th>
+            Título
+        </th>
+        <th>
+            Dirección del Contenido
+        </th>
+        <th>
+            Fecha de posteado
+        </th>
+        <th>
+            Marcas de Inadecuado
+        </th>
+        <th>
+            Nombre de Usuario
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+        <a href="@item.Ubicacion" target="_blank">Ver Contenido</a> 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaPosteado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inadecuado)
+        </td>
+        <td>
+            @item.EspecificacionUsuario.Membership
+        </td>
+        <td>
+            @{
+                String nommov = (String)Session["nommovdelete"];
+                Membership.ApplicationName = nommov;
+            }
+            @if (Membership.GetUser(item.EspecificacionUsuario.Membership).IsApproved)
+            {
+                @Html.ActionLink("Bloquear Usuario", "EliminarUsuario", new { id = item.EspecificacionUsuarioId, membership = item.EspecificacionUsuario.Membership }) 
+            }
+        </td>
+    </tr>
+}
+
+</table>

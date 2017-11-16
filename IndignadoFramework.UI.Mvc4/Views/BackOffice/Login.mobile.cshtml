@@ -1,0 +1,66 @@
+﻿@model IndignadoFramework.UI.Mvc4.Models.LoginModel
+@{
+    ViewBag.Title = "Login.mobile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="post">
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<div class="convocatoria">
+@using (Html.BeginForm((string)ViewBag.FormAction, "BackOffice"))
+{
+    @Html.ValidationSummary(true, "El ingreso fue insatisfactorio. Corrija los errores he intente de nuevo.")
+    
+    <h3>Ingreso de Administradores Movil</h3>
+    <fieldset dir="ltr">
+
+            <br />
+        @Html.Label("Email")
+        <div id="titulo">
+        <div class="editor-field">
+        @Html.TextBoxFor(m => m.nombre)
+        @Html.ValidationMessageFor(m => m.nombre)
+        </div>
+        </div>
+
+        @Html.Label("Contraseña")
+        <div id="titulo">
+        <div class="editor-field">
+        @Html.PasswordFor(m => m.contraseña)
+        @Html.ValidationMessageFor(m => m.contraseña)
+        </div>
+        </div>
+
+        @Html.Label("Nombre Movimiento")
+        <div id="titulo">
+        <div class="editor-field">
+        @Html.TextBox("nommov")
+        </div>
+        </div>
+        @{List<SelectListItem> items = new List<SelectListItem>();
+          items.Add(new SelectListItem
+          {
+              Text = "General",
+              Value = "1"
+          });
+          items.Add(new SelectListItem
+          {
+              Text = "Movimiento",
+              Value = "2",
+          });
+        }
+        @Html.Label("Administrador", new { @class = "DropDownList" })
+        @Html.DropDownList("Administradores", items, new { style = " box-shadow: 2px 2px 2px #888888;    background-color: #fff; border: 3px solid #99f; cursor: pointer; font-size: 1.2em; color: #333;" })
+        @*Html.CheckBox("admingen") 
+        Html.Label("Administrador General", new { @class = "checkbox" })*@
+        
+
+        <br />
+        <br /><div >
+        <input style="margin: 10px 0px 10px 5px;" class="boton" type="submit" value="Ingresar" /></div>
+    </fieldset>
+
+}
+    </div>
+</div>

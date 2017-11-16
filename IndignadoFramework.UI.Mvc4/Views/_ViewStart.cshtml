@@ -1,0 +1,18 @@
+﻿@{
+    if(Session["idMov"] != null)
+    {
+        int idMov = (int)Session["idMov"];
+        if(idMov == 0)
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else if(idMov > 0)
+        {
+            Layout = "~/Views/Shared/_SpaceLayout.cshtml";
+        }
+    }
+    else
+    {
+        //Layout = "~/Views/Shared/_ErrorLayout.cshtml";
+    }
+}

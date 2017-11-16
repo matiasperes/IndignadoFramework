@@ -1,0 +1,89 @@
+﻿@model IndignadoFramework.Entities.Movimiento
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Movimiento</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UbicacionLatitud)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UbicacionLatitud)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UbicacionLongitud)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UbicacionLongitud)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Logo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Logo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Estilo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Estilo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.M)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.M)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.N)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.N)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.X)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.X)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Z)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Z)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

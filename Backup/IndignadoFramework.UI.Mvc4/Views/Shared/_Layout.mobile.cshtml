@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="@Url.Content("~/Content/jquery.mobile-1.0b3.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Site.Mobile.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/jquery.mobile-1.0b3.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")" type="text/javascript"></script>
+        <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")"></script>
+
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+
+        <header>
+            <div class="content-wrapper">
+                    <section id="login">
+                        @Html.Partial("loginPartialBO")
+                    </section>
+                <div class="float-left">
+
+                    <nav>
+                        <ul id="menu" data-role="listview" data-inset="true">
+                            @if (Request.IsAuthenticated && Roles.IsUserInRole("AdministradorGeneral"))
+                            {
+                            <li data-role="list-divider" >@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li data-role="list-divider">@Html.ActionLink("Movimientos", "Index", "Movimiento")</li>
+                            }
+                            else
+                            { 
+                            <li data-role="list-divider">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li data-role="list-divider">@Html.ActionLink("Movimiento", "Index", "Movimiento")</li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Indignado Framework Mobile</p>
+                </div>
+                <div class="float-right">
+                    @*<ul id="social">
+                        <li><a href="http://facebook.com" class="facebook">Facebook</a></li>
+                        <li><a href="http://twitter.com" class="twitter">Twitter</a></li>
+                    </ul>*@
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

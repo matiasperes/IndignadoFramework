@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebe5b3f0-925d-4a0d-bfe7-72cdd0dc1abc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/FrontOfficeService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FrontOfficeService2.disco" MetadataType="Disco" ID="20ffeea8-5af0-4108-b183-90d945736db5" SourceId="1" SourceUrl="http://localhost:8000/FrontOfficeService?disco" />
+    <MetadataFile FileName="FrontOfficeService6.xsd" MetadataType="Schema" ID="6509490c-3bb3-4570-8ee4-41b63140fd97" SourceId="1" SourceUrl="http://localhost:8000/FrontOfficeService?xsd=xsd4" />
+    <MetadataFile FileName="FrontOfficeService7.xsd" MetadataType="Schema" ID="5a0c7f01-da9c-4e5f-8c4a-f139b164d27b" SourceId="1" SourceUrl="http://localhost:8000/FrontOfficeService?xsd=xsd0" />
+    <MetadataFile FileName="FrontOfficeService8.xsd" MetadataType="Schema" ID="da5668da-b970-499f-8260-b7a0a08f5e1a" SourceId="1" SourceUrl="http://localhost:8000/FrontOfficeService?xsd=xsd1" />
+    <MetadataFile FileName="FrontOfficeService9.xsd" MetadataType="Schema" ID="cdf899eb-efa4-41fa-9fd9-21cf0bb23532" SourceId="1" SourceUrl="http://localhost:8000/FrontOfficeService?xsd=xsd2" />
+    <MetadataFile FileName="FrontOfficeService3.wsdl" MetadataType="Wsdl" ID="a7a6831d-9dbf-46d1-b1bd-c443debb2424" SourceId="1" SourceUrl="http://localhost:8000/FrontOfficeService?wsdl=wsdl0" />
+    <MetadataFile FileName="FrontOfficeService10.xsd" MetadataType="Schema" ID="623d5af3-9b5e-4c91-92c2-ce29728a869d" SourceId="1" SourceUrl="http://localhost:8000/FrontOfficeService?xsd=xsd3" />
+    <MetadataFile FileName="FrontOfficeService4.wsdl" MetadataType="Wsdl" ID="c7605bf3-d3b0-42f9-8cb9-0350f12f7ddb" SourceId="1" SourceUrl="http://localhost:8000/FrontOfficeService?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

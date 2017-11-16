@@ -1,0 +1,64 @@
+﻿@using IndignadoFramework.Entities
+
+@{
+    ViewBag.Title = "Home";
+}
+
+
+ 
+              
+          
+
+<div class="post">
+<h2>Mapa de Convocatorias</h2>
+
+@{Html.RenderAction("ObtenerMapa", "Home");}
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="post">
+    <h2>Contenido Compartido</h2>
+    
+@using (Ajax.BeginForm("ObtenerContenido", "Contenido", new { },
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        OnFailure = "searchFailed",
+        LoadingElementId = "ajax-loader",
+        UpdateTargetId = "resultadosbusqueda",
+    }, new { id = "formFiltrado" }))
+{
+    <div class="panel">
+    <select name="combo" style="font-size: 1.2em; margin: 0 0 0 0; padding: 0px;">
+        <option value="1">Más rankeados</option>
+        <option value="2">Más recientes</option>
+    </select> 
+    <input type="text" name="filtro" style="font-size: 1.2em; width:218xxpx"/>
+    
+    <a class="icon iconActualizar" onclick="$('form#formFiltrado').trigger('submit');"><span>Label</span></a>
+    
+    
+    <noscript>
+    <input type="submit" value="Filtrar"/>
+    </noscript>
+
+    
+    
+    <img id="ajax-loader" src="@Url.Content("~/Images/loader.gif")" style="font-size: 1.2em; display:none;" alt="ajax-loader"/>
+    </div>
+}
+
+
+    <div id="resultadosbusqueda">
+    @{Html.RenderAction("ObtenerContenido", "Contenido", new { combo = 1, filtro = "" });}
+    </div>
+</div>

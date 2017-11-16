@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://serena-yeoh//LayerSample/Expense/2007/08" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://serena-yeoh//LayerSample/Expense/2007/08" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://serena-yeoh//LayerSample/Expense/2007/08/Imports">
+      <xsd:import schemaLocation="http://localhost:8000/BackOfficeService?xsd=xsd0" namespace="http://serena-yeoh//LayerSample/Expense/2007/08" />
+      <xsd:import schemaLocation="http://localhost:8000/BackOfficeService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" />
+      <xsd:import schemaLocation="http://localhost:8000/BackOfficeService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8000/BackOfficeService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBackOfficeService_ObtenerTodosMovimientos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTodosMovimientos" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerTodosMovimientos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTodosMovimientosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerTodosMovimientos_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q1:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_AgregarMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_AgregarMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_AgregarMovimiento_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q2:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_BorrarMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_BorrarMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_BorrarMovimiento_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q3:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ModificarMovimiento_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarMovimiento" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ModificarMovimiento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarMovimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ModificarMovimiento_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q4:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientoXNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerMovimientoXNombre" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientoXNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerMovimientoXNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientoXNombre_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q5:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientoXId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerMovimientoXId" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientoXId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerMovimientoXIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientoXId_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q6:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientosPaginando_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerMovimientosPaginando" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientosPaginando_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerMovimientosPaginandoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBackOfficeService_ObtenerMovimientosPaginando_ProcessExecutionFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/IndignadoFramework.Services.Contracts" name="detail" element="q7:ProcessExecutionFault" />
+  </wsdl:message>
+  <wsdl:portType name="IBackOfficeService">
+    <wsdl:operation name="ObtenerTodosMovimientos">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerTodosMovimientos" message="tns:IBackOfficeService_ObtenerTodosMovimientos_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerTodosMovimientosResponse" message="tns:IBackOfficeService_ObtenerTodosMovimientos_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerTodosMovimientosProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IBackOfficeService_ObtenerTodosMovimientos_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarMovimiento">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/AgregarMovimiento" message="tns:IBackOfficeService_AgregarMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/AgregarMovimientoResponse" message="tns:IBackOfficeService_AgregarMovimiento_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/AgregarMovimientoProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IBackOfficeService_AgregarMovimiento_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BorrarMovimiento">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/BorrarMovimiento" message="tns:IBackOfficeService_BorrarMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/BorrarMovimientoResponse" message="tns:IBackOfficeService_BorrarMovimiento_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/BorrarMovimientoProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IBackOfficeService_BorrarMovimiento_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarMovimiento">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ModificarMovimiento" message="tns:IBackOfficeService_ModificarMovimiento_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ModificarMovimientoResponse" message="tns:IBackOfficeService_ModificarMovimiento_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ModificarMovimientoProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IBackOfficeService_ModificarMovimiento_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerMovimientoXNombre">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientoXNombre" message="tns:IBackOfficeService_ObtenerMovimientoXNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientoXNombreResponse" message="tns:IBackOfficeService_ObtenerMovimientoXNombre_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientoXNombreProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IBackOfficeService_ObtenerMovimientoXNombre_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerMovimientoXId">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientoXId" message="tns:IBackOfficeService_ObtenerMovimientoXId_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientoXIdResponse" message="tns:IBackOfficeService_ObtenerMovimientoXId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientoXIdProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IBackOfficeService_ObtenerMovimientoXId_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerMovimientosPaginando">
+      <wsdl:input wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientosPaginando" message="tns:IBackOfficeService_ObtenerMovimientosPaginando_InputMessage" />
+      <wsdl:output wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientosPaginandoResponse" message="tns:IBackOfficeService_ObtenerMovimientosPaginando_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://serena-yeoh//LayerSample/Expense/2007/08/IBackOfficeService/ObtenerMovimientosPaginandoProcessExecutionFaultFault" name="ProcessExecutionFaultFault" message="tns:IBackOfficeService_ObtenerMovimientosPaginando_ProcessExecutionFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

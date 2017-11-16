@@ -1,0 +1,48 @@
+@model IndignadoFramework.UI.Mvc4.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<div class="post">
+<h2>Ingreso</h2>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<div class="convocatoria">
+@using (Html.BeginForm((string)ViewBag.FormAction, "Account")) {
+    @Html.ValidationSummary(true, "Su ingreso fue insatisfactorio. Pro favor corrija sus errores y vuelva a intentarlo.")
+
+    <fieldset>
+        <legend>Formulario de ingreso</legend>
+
+        <legend>Email</legend>
+        <div class="editor-field">
+        @Html.TextBoxFor(m => m.nombre)
+        @Html.ValidationMessageFor(m => m.nombre)
+        </div>
+
+        <legend>Contraseña</legend>
+        <div class="editor-field">
+        @Html.PasswordFor(m => m.contraseña)
+        @Html.ValidationMessageFor(m => m.contraseña)
+        </div>
+
+
+        <div class="editor-field">
+        @Html.CheckBoxFor(m => m.RememberMe)
+        @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+        </div>
+
+        <input class="boton" type="submit" value="Log in" />
+    </fieldset>
+    <fieldset>
+        <div class="editor-field">
+        Si usted no tiene una cuenta @Html.ActionLink("registrese", "Register")
+        </div>
+
+    </fieldset>
+}
+    </div>
+</div>

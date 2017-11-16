@@ -1,0 +1,196 @@
+﻿@model IndignadoFramework.Entities.Movimiento
+
+
+@*
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+      <script type="text/javascript">
+          var map = null;
+          var click;
+          function getMap() {
+              map = new Microsoft.Maps.Map(document.getElementById('myMap'), { credentials: 'AjKX5fPclkvH3YTYhLImWMour1KISHMrcFVBrXzVsjqwMLiWobOq83esCN1ra0Q0' });
+          }
+
+          //          function mapClickEventHandler() {
+          //              click = Microsoft.Maps.Events.addHandler(map, 'click', displayInfo);
+          //              alert('Perform action on map to fire this event');
+          //          }
+          //          function detachMapClickEventHandler() {
+          //              Microsoft.Maps.Events.removeHandler(click);
+          //              alert('event detached');
+          //          }
+          //          displayInfo = function (e) {
+          //              var output = document.getElementById("output");
+          //              if (!output) {
+          //                  output = document.createElement("div");
+          //                  output.id = "output";
+          //                  document.body.appendChild(output);
+          //              }
+          //              output.innerHTML = "Event info - " + e.eventName + "<br><br>"
+          //                           + "Window:" + e.originalEvent.screenX + "(x) " + e.originalEvent.screenY + "(y)<br>"
+          //                           + "client:" + e.originalEvent.clientX + "(x) " + e.originalEvent.clientY + "(y)<br>"
+          //                           + "Keychar:" + e.originalEvent.keyCode + "<br>"
+          //                           + "keys  :" + e.originalEvent.altKey + "(alt) " + e.originalEvent.ctrlKey + "(ctrl) " + e.originalEvent.shiftKey + "(shift)<br>";
+          //          };
+
+          function setView() {
+              
+              if ("@Model.UbicacionLatitud".indexOf(",") != -1 || "@Model.UbicacionLongitud".indexOf(",") != -1) {
+                  var valueLatitude = "@Model.UbicacionLatitud".split(",");
+                  var valueLongitud = "@Model.UbicacionLongitud".split(",");
+
+                  map.setView({ zoom: 12, center: new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])) });
+              } else {
+                  map.setView({ zoom: 12, center: new Microsoft.Maps.Location(parseFloat("@Model.UbicacionLatitud"), parseFloat("@Model.UbicacionLongitud")) });
+              }
+          }
+        
+        //<div class="post">
+
+
+//          endDragDetails = function (e) {
+//              var $UbicacionLatitud = $('#UbicacionLatitud');
+//              var valueLatitude = $UbicacionLatitud.val().split(",");
+//              //alert('Old UbicacionLatitud: ' + parseFloat(valueLatitude[0] + "." + valueLatitude[1]));
+//              var $UbicacionLongitud = $('#UbicacionLongitud');
+//              var valueLongitud = $UbicacionLongitud.val().split(",");
+//              //alert('Old UbicacionLongitud: ' + parseFloat(valueLongitud[0] + "." + valueLongitud[1]));
+
+//              valueLatitude = e.entity.getLocation().latitude.toString().split(".");
+//              $UbicacionLatitud.val(valueLatitude[0] + "," + valueLatitude[1]);
+//              //alert('New UbicacionLatitud: ' + $UbicacionLatitud.val());
+//              valueLongitud = e.entity.getLocation().longitude.toString().split(".");
+//              $UbicacionLongitud.val(valueLongitud[0] + "," + valueLongitud[1]);
+//              //alert('New UbicacionLongitud: ' + $UbicacionLongitud.val());
+
+
+//              //alert("Event Info - start drag \n" + "Start Latitude/Longitude: " + e.entity.getLocation());
+//          };
+
+          function addPinPin() {
+              //var pushpinOptions = { draggable: true };
+
+//              var valueLatitude = "@Model.UbicacionLatitud".split(",");
+//              var valueLongitud = "@Model.UbicacionLongitud".split(",");
+
+//              var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])));
+//              //var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+//              map.entities.push(pushpin);
+
+              if ("@Model.UbicacionLatitud".indexOf(",") != -1 || "@Model.UbicacionLongitud".indexOf(",") != -1) {
+                  var valueLatitude = "@Model.UbicacionLatitud".split(",");
+                  var valueLongitud = "@Model.UbicacionLongitud".split(",");
+
+                  var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])), pushpinOptions);
+                  //var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+                  map.entities.push(pushpin);
+              } else {
+                  var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat("@Model.UbicacionLatitud"), parseFloat("@Model.UbicacionLongitud")), pushpinOptions);
+                  //var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+                  map.entities.push(pushpin);
+              }
+          }
+
+
+
+          $(document).ready(function () { getMap(); setView(); });
+          $(window).load(function () { addPinPin(); });
+
+
+
+</script>
+
+
+
+
+<h2>Detalle</h2>
+<td>
+            @*@Html.DisplayFor(model => model.Logo)*@
+            <img alt="Image" srC="@Html.DisplayFor(model => model.Logo)" width="200" height="200" />
+        </td>
+
+<fieldset>
+    <legend>Movimiento</legend>
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UbicacionLatitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UbicacionLongitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Logo)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Estilo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.M)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.N)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.X)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Z)
+        </th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.UbicacionLatitud)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.UbicacionLongitud)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Descripcion)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(model => model.Estilo)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.M)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.N)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.X)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Z)
+        </td>
+    </tr>
+
+
+</table>
+
+<div id='myMap' style="position:relative; width:400px; height:400px;"></div>
+<div id='output'> </div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,157 @@
+@model IndignadoFramework.UI.Mvc4.Models.RegisterModel
+@using IndignadoFramework.Entities;
+@using IndignadoFramework.UI.Mvc4.Models;
+@{
+    ViewBag.Title = "Registro";
+}
+
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script type="text/javascript">
+          var map = null;
+          var click;
+          function getMap() {
+              map = new Microsoft.Maps.Map(document.getElementById('myMap'), { credentials: 'AjKX5fPclkvH3YTYhLImWMour1KISHMrcFVBrXzVsjqwMLiWobOq83esCN1ra0Q0' });
+          }
+
+          function mapClickEventHandler() {
+              click = Microsoft.Maps.Events.addHandler(map, 'click', displayInfo);
+              alert('Perform action on map to fire this event');
+          }
+          function detachMapClickEventHandler() {
+              Microsoft.Maps.Events.removeHandler(click);
+              alert('event detached');
+          }
+          displayInfo = function (e) {
+              var output = document.getElementById("output");
+              if (!output) {
+                  output = document.createElement("div");
+                  output.id = "output";
+                  document.body.appendChild(output);
+              }
+              output.innerHTML = "Event info - " + e.eventName + "<br><br>"
+                           + "Window:" + e.originalEvent.screenX + "(x) " + e.originalEvent.screenY + "(y)<br>"
+                           + "client:" + e.originalEvent.clientX + "(x) " + e.originalEvent.clientY + "(y)<br>"
+                           + "Keychar:" + e.originalEvent.keyCode + "<br>"
+                           + "keys  :" + e.originalEvent.altKey + "(alt) " + e.originalEvent.ctrlKey + "(ctrl) " + e.originalEvent.shiftKey + "(shift)<br>";
+          };
+
+          function setView() {
+              map.setView({ zoom: 10, center: new Microsoft.Maps.Location("@Model.latitud", "@Model.longitud") });
+          }
+
+          endDragDetails = function (e) {
+
+              var $latitud = $('#latitud');
+              var valueLatitude = $latitud.val();
+              var $longitud = $('#longitud');
+              var valueLongitud = $longitud.val();
+
+              valueLatitude = e.entity.getLocation().latitude.toString();
+              $latitud.val(valueLatitude);
+              valueLongitud = e.entity.getLocation().longitude.toString();
+              $longitud.val(valueLongitud);
+
+          };
+
+          function addPinPin(lon, lat) {
+              var pushpinOptions = { draggable: true };
+
+              var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lat, lon), pushpinOptions);
+              var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+              map.entities.push(pushpin);
+          }
+
+
+
+          $(document).ready(function () { getMap(); setView(); });
+          $(window).load(function () { addPinPin("@Model.longitud", "@Model.latitud"); });
+
+
+
+</script>
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="post">
+<h2>Registro de Usuario</h2>
+<h2> </h2>
+<p class="message-info">
+La contraseña debe tener un minimo de @Membership.MinRequiredPasswordLength caracteres.
+</p>
+<p class="message-info">
+Debe completar todos los campos con *.
+</p>
+<div class="convocatoria">
+@using (Html.BeginForm((string)ViewBag.FormAction, "Account"))
+{
+    @Html.ValidationSummary(true, "La creacion de la cuenta fue insatisfactoria. Corrija los errores y pruebe nuevamente.")
+        @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Información Personal</legend>
+
+        <legend>Nombre</legend>
+        <div class="editor-field">
+        @Html.EditorFor(m => m.nombre)
+        </div>
+
+        <legend>Apellido</legend>
+        <div class="editor-field">
+        @Html.TextBoxFor(m => m.apellido)
+        </div>
+
+        <legend>Email*</legend>
+        <div class="editor-field">
+        @Html.TextBoxFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        
+        <legend>Contraseña*</legend>
+        <div class="editor-field">
+        @Html.PasswordFor(m => m.contraseña)         @Html.ValidationMessageFor(m => m.contraseña)
+        </div>
+        
+        <legend>Confirmación contraseña*</legend>
+        <div class="editor-field">
+        @Html.PasswordFor(m => m.ccontraseña)        @Html.ValidationMessageFor(m => m.ccontraseña)
+        </div>
+        <br>    
+        </fieldset>
+        <fieldset>
+        <legend>Ubicación Geografica</legend>
+
+        <input type="hidden" id="latitud" name="latitud" value="@Model.latitud" />
+
+        <input type="hidden" id="longitud" name="longitud" value="@Model.longitud" />
+
+        <div> 
+            <div id='myMap' style="position:relative; width:400px; height:400px;"></div>
+            <div id='output'> </div>
+        </div>
+      </fieldset>
+
+    <fieldset>
+        <legend>Seleccione las categorias tematicas de su interes</legend>
+            @{
+    CategoriaTematica[] categs = (CategoriaTematica[])Session["Categorias"];
+    if (categs != null)
+   {
+        for (var i = 0; i < categs.Length; i++)
+        {
+
+                        <div class="editor-label">@Html.CheckBox(categs[i].Nombre)  @Html.Label(categs[i].Nombre)  </div>
+                    
+        }
+   }
+             }
+    </fieldset>
+    <fieldset>
+       <input class="boton" type="submit" value="Register" />
+    </fieldset>
+
+}
+    </div>
+        </div>

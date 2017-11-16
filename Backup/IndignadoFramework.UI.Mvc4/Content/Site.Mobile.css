@@ -1,0 +1,173 @@
+﻿.view-switcher {
+    padding: 0.5em; 
+    font-weight: normal;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input[type="text"].input-validation-error,
+input[type="password"].input-validation-error {
+    border: solid 1px #e80c4d;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+html {
+    background-color: #99f;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #99f;
+    border-top: solid 10px #000;
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* main layout
+----------------------------------------------------------*/
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+#body {
+    background-color: #ddf;
+    clear: both;
+    padding-bottom: 35px;
+}
+
+    .main-content {
+        padding-left: 10px;
+        padding-top: 30px;
+    }
+
+    .featured + .main-content {
+        background: url("../Images/heroAccent.png") no-repeat;
+    }
+
+footer {
+    clear: both;
+    background-color: #ddf;
+    font-size: .8em;
+    height: 100px;
+}
+
+
+/*fielset*/
+fieldset {
+ border: 3px solid #99f;
+    border-top-style:solid;
+    border-right-style:none;
+    border-bottom-style:solid;
+    border-left-style:none;
+    /*    border-color:  ;*/
+    margin-right:1px;
+    margin-left:1px;
+    text-shadow: 2px 2px 2px #aaa;
+}
+
+    fieldset legend 
+    {
+        font-size: 1.8em; 
+        font-weight: bold;
+        margin: 5px 5px 5px 5px;
+    }
+    
+    fieldset ol {
+        padding: 0;
+        list-style: none;
+    }
+
+        fieldset ol li {
+            padding-bottom: 5px;
+        }
+
+    fieldset label {
+        display: block;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    fieldset label.checkbox {
+        display: inline;
+    }
+
+    fieldset input[type="text"],
+    fieldset input[type="password"] {
+        border: 3px solid #99f;
+        color: #333;
+        font-size: 1.2em;
+        margin: 1px 0 6px 0;
+        padding: 5px;
+        box-shadow: 2px 2px 2px #888888;
+    }
+
+        fieldset input[type="text"]:focus,
+        fieldset input[type="password"]:focus {
+            border: 3px solid #99f;
+        }
+
+    fieldset input[type="submit"] {
+        background-color: #fff;
+        border: 3px solid #99f;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: 600;
+        margin: 10px 0px 10px 225px;
+        padding: 5px;
+        box-shadow: 5px 5px 5px #888888;
+        border-radius:25px;
+    }
+
+
+/* menu
+----------------------------------------------------------*/
+ul#menu {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+
+    ul#menu li {
+        display: inline;
+        list-style: none;
+        padding-left: 15px;
+    }
+
+        ul#menu li a {
+            background: none;
+            color: #eef;
+            text-decoration: none;
+        }
+
+        ul#menu li a:hover {
+            color: #88e;
+            text-decoration: none;
+            background: #eef;
+        }
+
+/*table*/
+

@@ -1,0 +1,9 @@
+﻿
+    <ul class="slides">
+    @foreach (var item in Model)
+    {
+	    <li>
+		    <img src="@item.Uri.ToString()" alt="Thumbnail de video" />
+	    </li>
+    }
+    </ul>

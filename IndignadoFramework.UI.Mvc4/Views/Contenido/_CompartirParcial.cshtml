@@ -1,0 +1,9 @@
+﻿  @model IndignadoFramework.Entities.Contenido
+
+        <fieldset>
+            <legend>Seleccione una imágen o video para compartir</legend>
+            <div id="titulo">
+                <input data-val="true" enctype = "multipart/form-data" data-val-required="Campo requerido" id="Ubicacion" name="uploadFile" type="file" value="" />
+                @Html.ValidationMessageFor(model => model.Ubicacion)
+                </div>
+        </fieldset>

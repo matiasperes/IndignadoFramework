@@ -1,0 +1,14 @@
+
+
+@{
+    if ((int)Session["idMov"] > 0) 
+    {
+        @Html.Partial("_FormMovement")
+    }
+    else
+    {
+        @Html.Partial("_FormBackoffice")
+    }
+    
+    
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://serena-yeoh//LayerSample/Expense/2007/08" elementFormDefault="qualified" targetNamespace="http://serena-yeoh//LayerSample/Expense/2007/08" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1356/FrontOfficeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" />
+  <xs:element name="ObtenerConvocatoriaXId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idConvocatoria" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerConvocatoriaXIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" minOccurs="0" name="ObtenerConvocatoriaXIdResult" nillable="true" type="q1:Convocatoria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarConvocatoria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" minOccurs="0" name="convocatoria" nillable="true" type="q2:Convocatoria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgregarConvocatoriaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" minOccurs="0" name="AgregarConvocatoriaResult" nillable="true" type="q3:Convocatoria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFeedsConvocatoria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idConvocatoria" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFeedsConvocatoriaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" minOccurs="0" name="GetFeedsConvocatoriaResult" nillable="true" type="q4:ArrayOfWebFeed" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmarAsistenciaConvocatoria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idConvocatoria" type="xs:int" />
+        <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmarAsistenciaConvocatoriaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerConvocatoriasMovimiento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idMovimiento" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerConvocatoriasMovimientoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/IndignadoFramework.Entities" minOccurs="0" name="ObtenerConvocatoriasMovimientoResult" nillable="true" type="q5:ArrayOfConvocatoria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

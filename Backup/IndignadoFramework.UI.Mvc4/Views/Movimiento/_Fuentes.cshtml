@@ -1,0 +1,9 @@
+﻿@model IEnumerable<IndignadoFramework.Entities.FuenteWEB>
+
+
+@foreach (var fuente in Model)
+{
+    <p><strong>Fuente @fuente.Id</strong></p>
+    <p><strong>Link: @fuente.Url</strong></p>
+    <p><strong>DLL: @fuente.UrlDll</strong></p>
+}

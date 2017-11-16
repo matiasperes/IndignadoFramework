@@ -1,0 +1,18 @@
+﻿@{            
+    var logueado = Session["logueado2"];
+    if (logueado != null && (bool)logueado)
+    {
+        var name = (String)Session["emailUs2"];
+            <p id="top-navigation">
+                Hola, @name !<span>|</span>
+                @Html.ActionLink("Salir", "LogOff", "BackOffice")
+            </p>
+
+    }
+    else
+    {
+			<p id="top-navigation">
+            @Html.ActionLink("Entrar", "Login", "BackOffice")
+            </p>        
+    }
+}

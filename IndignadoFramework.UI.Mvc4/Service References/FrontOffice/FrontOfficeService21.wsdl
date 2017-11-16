@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:i0="http://serena-yeoh//LayerSample/Expense/2007/08" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FrontOfficeService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://serena-yeoh//LayerSample/Expense/2007/08" location="http://indignado.cloudapp.net:8080/FrontOfficeService.svc?wsdl=wsdl0" />
+  <wsdl:types />
+  <wsdl:binding name="BasicHttpBinding_IFrontOfficeService" type="i0:IFrontOfficeService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AgregarUsuario">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/AgregarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEspecificacionUsuarioXId">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerEspecificacionUsuarioXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEspecificacionUsuarioXMembership">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerEspecificacionUsuarioXMembership" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFuentesDatosMovimiento">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/GetFuentesDatosMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConvocatoriaXId">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriaXId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarConvocatoria">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/AgregarConvocatoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmarAsistenciaConvocatoria">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ConfirmarAsistenciaConvocatoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConvocatoriasMovimiento">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriasMovimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConvocatoriasPaginando">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerConvocatoriasPaginando" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCategoriasTematicas">
+      <soap:operation soapAction="http://serena-yeoh//LayerSample/Expense/2007/08/IFrontOfficeService/ObtenerCategoriasTematicas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ProcessExecutionFaultFault">
+        <soap:fault use="literal" name="ProcessExecutionFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FrontOfficeService">
+    <wsdl:port name="BasicHttpBinding_IFrontOfficeService" binding="tns:BasicHttpBinding_IFrontOfficeService">
+      <soap:address location="http://indignado.cloudapp.net:8080/FrontOfficeService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

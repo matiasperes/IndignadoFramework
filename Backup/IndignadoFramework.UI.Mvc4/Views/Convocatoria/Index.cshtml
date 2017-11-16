@@ -1,0 +1,19 @@
+﻿@model IEnumerable<IndignadoFramework.Entities.Convocatoria>
+
+@{
+    ViewBag.Title = "Lista de Convocatorias";
+}
+
+<div class="post">
+<h2>Lista de Convocatorias</h2>
+
+<p> 
+    <strong>Se encontraron @Model.Count() convocatorias:</strong></p>
+<ul>
+    @foreach (var conv in Model)
+    {
+        <li>@Html.ActionLink(conv.Titulo, "Details", new { idConv = conv.Id })</li>
+    }
+</ul>
+
+</div>

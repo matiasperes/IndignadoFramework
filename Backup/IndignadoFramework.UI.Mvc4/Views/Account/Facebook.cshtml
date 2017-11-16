@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Facebook";
+}
+
+@{          
+    Uri myurl = Request.Url;
+}
+<iframe src="https://www.facebook.com/plugins/registration?
+             client_id=261519683946122&
+             redirect_uri=@myurl&
+             fields=[
+             {'name':'name'},
+             {'name':'email'},
+             {'name':'birthday'}
+             ] "
+        scrolling="auto"
+        frameborder="no"
+        style="border:none"
+        allowTransparency="true"
+        width="100%"
+        height="530">
+</iframe>

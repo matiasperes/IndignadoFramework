@@ -1,0 +1,135 @@
+﻿@model IndignadoFramework.UI.Mvc4.Models.RegisterModel
+@using IndignadoFramework.Entities;
+@using IndignadoFramework.UI.Mvc4.Models;
+@{
+    ViewBag.Title = "Facebook2";
+}
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script type="text/javascript">
+          var map = null;
+          var click;
+          function getMap() {
+              map = new Microsoft.Maps.Map(document.getElementById('myMap'), { credentials: 'AjKX5fPclkvH3YTYhLImWMour1KISHMrcFVBrXzVsjqwMLiWobOq83esCN1ra0Q0' });
+          }
+
+          function mapClickEventHandler() {
+              click = Microsoft.Maps.Events.addHandler(map, 'click', displayInfo);
+              alert('Perform action on map to fire this event');
+          }
+          function detachMapClickEventHandler() {
+              Microsoft.Maps.Events.removeHandler(click);
+              alert('event detached');
+          }
+          displayInfo = function (e) {
+              var output = document.getElementById("output");
+              if (!output) {
+                  output = document.createElement("div");
+                  output.id = "output";
+                  document.body.appendChild(output);
+              }
+              output.innerHTML = "Event info - " + e.eventName + "<br><br>"
+                           + "Window:" + e.originalEvent.screenX + "(x) " + e.originalEvent.screenY + "(y)<br>"
+                           + "client:" + e.originalEvent.clientX + "(x) " + e.originalEvent.clientY + "(y)<br>"
+                           + "Keychar:" + e.originalEvent.keyCode + "<br>"
+                           + "keys  :" + e.originalEvent.altKey + "(alt) " + e.originalEvent.ctrlKey + "(ctrl) " + e.originalEvent.shiftKey + "(shift)<br>";
+          };
+
+          function setView() {
+              if ("@Model.latitud".indexOf(",") != -1 || "@Model.longitud".indexOf(",") != -1) {
+                  var valueLatitude = "@Model.latitud".split(",");
+                  var valueLongitud = "@Model.longitud".split(",");
+
+                  map.setView({ zoom: 12, center: new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])) });
+              } else {
+                  map.setView({ zoom: 12, center: new Microsoft.Maps.Location(parseFloat("@Model.latitud"), parseFloat("@Model.longitud")) });
+              }
+              
+          }
+
+          endDragDetails = function (e) {
+
+              var $latitud = $('#latitud');
+              var valueLatitude = $latitud.val();
+              var $longitud = $('#longitud');
+              var valueLongitud = $longitud.val();
+
+              valueLatitude = e.entity.getLocation().latitude.toString();
+              $latitud.val(valueLatitude);
+              valueLongitud = e.entity.getLocation().longitude.toString();
+              $longitud.val(valueLongitud);
+
+          };
+
+          function addPinPin(lon, lat) {
+              var pushpinOptions = { draggable: true };
+
+              if (lat.indexOf(",") != -1 || lon.indexOf(",") != -1) {
+                  var valueLatitude = lat.split(",");
+                  var valueLongitud = lot.split(",");
+
+                  var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])), pushpinOptions);
+                  var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+                  map.entities.push(pushpin);
+              } else {
+                  var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lat, lon), pushpinOptions);
+                  var pushpindragend = Microsoft.Maps.Events.addHandler(pushpin, 'dragend', endDragDetails);
+                  map.entities.push(pushpin);
+              }
+
+          }
+
+
+
+          $(document).ready(function () { getMap(); setView(); });
+          $(window).load(function () { addPinPin("@Model.longitud", "@Model.latitud"); });
+
+
+
+</script>
+
+
+<div class="post">
+<h2>Complete los siguientes Datos</h2>
+<br />
+<div class="convocatoria">
+@using (Html.BeginForm((string)ViewBag.FormAction, "Account"))
+{
+    @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+        <legend>Ubicación Geografica</legend>
+
+        <input type="hidden" id="latitud" name="latitud" value="@Model.latitud" />
+
+        <input type="hidden" id="longitud" name="longitud" value="@Model.longitud" />
+
+        <div> 
+            <div id='myMap' style="position:relative; width:400px; height:400px;"></div>
+            <div id='output'> </div>
+        </div>
+      </fieldset>
+
+    <fieldset>
+        <legend>Seleccione las categorias tematicas de su interes</legend>
+    @{
+        CategoriaTematica[] categs = ViewBag.categs;
+        if (categs != null)
+        {
+            for (var i = 0; i < categs.Length; i++)
+            {
+
+                            <div class="editor-label">@Html.CheckBox(categs[i].Nombre)  @Html.Label(categs[i].Nombre)  </div>
+                    
+            }
+        }
+    }
+    </fieldset>
+    <fieldset>
+       <input class="boton" type="submit" value="Register" />
+    </fieldset>
+
+}
+    </div>
+</div>

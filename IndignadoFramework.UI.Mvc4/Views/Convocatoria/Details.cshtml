@@ -1,0 +1,195 @@
+﻿@model IndignadoFramework.Entities.Convocatoria
+
+@using IndignadoFramework.Entities;
+@using Google.GData.YouTube;
+@using Google.YouTube;
+@using Google.GData.Client;
+
+@{
+    ViewBag.Title = "Detalles de Convocatoria";
+}
+
+<div class="post">
+    <h2>Detalles de la Convocatoria @Model.Titulo</h2>
+    <div class="convocatoria">
+        
+        <div id="descr">
+        <fieldset>
+            
+            <legend>Descripcion</legend>
+            
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Descripcion)
+            </div>
+           
+        </fieldset>
+         </div>
+
+         <fieldset>
+            
+            <legend>Categoria Temática</legend>
+            
+            <div class="display-field">
+                @Html.DisplayFor(model => model.CategoriaTematica.Nombre)
+            </div>
+           
+        </fieldset>
+
+        <fieldset>
+            <legend>Lugar de Encuentro</legend>
+
+            <div class="display-label">
+         @Html.DisplayNameFor(model => model.UbicacionLatitud)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UbicacionLatitud)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UbicacionLongitud)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UbicacionLongitud)
+    </div>
+
+        </fieldset>
+        <fieldset>
+            <legend></legend>
+
+    <div class="display-field">
+        La convocatoria comienza el @Model.Inicio.ToString("d") a las @Model.Inicio.ToString("t")
+    </div>
+    <div class="display-field">
+        Quorum mínimo de @Html.DisplayFor(model => model.Quorum) personas
+    </div>
+
+    
+
+    <div class="display-field">
+        Cantidad de asistencias confirmadas: @Model.CantUsuariosConfirmados
+    </div>
+        </fieldset>
+    </div>
+
+    @if ((Session["logueado"] != null && (bool)Session["logueado"]) && Membership.FindUsersByName((String)Session["emailUs"]).Count > 0)
+    {
+        <div id="ConfirmarLink">
+
+            @if (ViewBag.BotonConfirmar)
+            {
+                @Ajax.ActionLink("Haga click aquí para confirmar su asistencia al evento", "ConfirmarAsistencia", new { idConv = Model.Id },
+                    new AjaxOptions
+                    {
+                        UpdateTargetId = "ConfirmarLink",
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET"
+                    });
+            }
+            else
+            {
+                <p>Usted ha confirmado asistencia a esta convocatoria.</p>
+            }
+        
+        </div>
+    }
+    </div>
+
+    <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+    <script>
+        new TWTR.Widget({
+            version: 2,
+            type: 'search',
+            search: '@Model.CategoriaTematica.Nombre',
+            interval: 30000,
+            title: '@Model.CategoriaTematica.Nombre',
+            subject: '@Model.CategoriaTematica.Nombre',
+            width: 600,
+            height: 300,
+            theme: {
+                shell: {
+                    background: '#333333',
+                    color: '#ffffff'
+                },
+                tweets: {
+                    background: '#ffffff',
+                    color: '#444444',
+                    links: '#1985b5'
+                }
+            },
+            features: {
+                scrollbar: false,
+                loop: true,
+                live: true,
+                behavior: 'default'
+            }
+        }).render().start();
+    </script>
+
+
+@foreach (var feed in ViewBag.Feeds as List<WebFeed>)
+{
+    if (feed.Tipo == WebFeed.TipoFuente.VIDEO)
+    {
+        <div class="post">
+	        <h2>Videos @feed.Title</h2>
+            <div class="videos-slider">
+			    <ul>
+                @foreach (WebFeedNode video in feed.Nodes)
+                {
+				    <li>
+					    <a title="" href="@video.Link" target="_blank"><img src="@video.ThumbnailUrl" alt="@video.Title" /></a>
+					    <p class="small-caption">@video.Updated</p>
+					    <p class="title">@video.Title</p>
+				    </li>
+                }
+			    </ul>
+			    <div class="videos-nav">
+				    <a title="slide anterior" class="ant-flecha" href="#">ant</a>
+					<a title="slide siguiente" class="sig-flecha" href="#">sig</a>								
+			    </div>
+		    </div>
+       </div> 
+    }
+    else if (feed.Tipo == WebFeed.TipoFuente.RSS || feed.Tipo == WebFeed.TipoFuente.ATOM)
+    {
+        if (feed.Nodes.Count > 0)
+        {
+        <div class="post">
+	        <h2>@feed.Title</h2>
+            @foreach (var node in feed.Nodes)
+            {
+                <div class="nodo-top"></div>
+				<div class="nodo-medio">
+	                <p><strong>@node.Title</strong></p>
+	                <p>
+                        @Html.Raw(node.Summary)
+                    </p>
+	                <a href="@node.Link" target="_blank">Leer Completo</a>
+                </div>
+                <div class="nodo-end"></div>
+            }
+        </div>
+        }
+    }
+    else
+    {
+        if (feed.Nodes.Count > 0)
+        {
+        <div class="post">
+	        <h2>@feed.Title</h2>
+            @foreach (var node in feed.Nodes)
+            {
+                <div class="nodo-top"></div>
+				<div class="nodo-medio">
+	                <p><strong>@node.Title</strong></p>
+                    <a href="@node.Link" target="_blank">Ver</a>
+                </div>
+                <div class="nodo-end"></div>
+            }
+        </div>
+        }
+    }
+}
+
+
+

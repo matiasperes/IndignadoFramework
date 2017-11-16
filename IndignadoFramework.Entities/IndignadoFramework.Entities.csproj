@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{83C6A1AF-CCDD-422C-83A2-F881632EB0B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IndignadoFramework.Entities</RootNamespace>
+    <AssemblyName>IndignadoFramework.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.GData.Client, Version=2.0.1.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Librerias\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions, Version=2.0.1.0, Culture=neutral, PublicKeyToken=0b4c5df2ebf20876, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Librerias\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.YouTube, Version=2.0.1.0, Culture=neutral, PublicKeyToken=af04a32718ae8833, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Librerias\Google.GData.YouTube.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoriaTematica.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CategoriaTematicaMetaData.cs">
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriaTematicaProjection.cs">
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contenido.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContenidoMetaData.cs">
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContenidoProjection.cs">
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Convocatoria.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConvocatoriaMetaData.cs">
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConvocatoriaProjection.cs">
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EspecificacionUsuario.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EspecificacionUsuarioMetaData.cs">
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EspecificacionUsuarioProjection.cs">
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FuenteWEB.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FuenteWEBMetaData.cs">
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FuenteWEBProjection.cs">
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Megusta.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MegustaMetaData.cs">
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MegustaProjection.cs">
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MensajeChat.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MensajeChatMetaData.cs">
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MensajeChatProjection.cs">
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Movimiento.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MovimientoMetaData.cs">
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoProjection.cs">
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpcionesContenido.cs" />
+    <Compile Include="POCO-Generator.cs">
+      <DependentUpon>POCO-Generator.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="POCO-MetadaGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POCO-MetadaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POCO-ProjectionsGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POCO-ProjectionsGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebFeed.cs" />
+    <Compile Include="WebFeedNode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="POCO-Generator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>POCO-Generator1.cs</LastGenOutput>
+    </None>
+    <None Include="POCO-MetadaGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>POCO-MetadaGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="POCO-ProjectionsGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>POCO-ProjectionsGenerator.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Librerias\Google.GData.Client.dll" />
+    <Content Include="Librerias\Google.GData.Extensions.dll" />
+    <Content Include="Librerias\Google.GData.YouTube.dll" />
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

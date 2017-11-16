@@ -1,0 +1,83 @@
+﻿@model IEnumerable<IndignadoFramework.Entities.Contenido>
+@using System.Text.RegularExpressions;
+
+@{
+    string url = string.Empty;
+    Regex YoutubeVideoRegex = new Regex("youtu(?:\\.be|be\\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)");
+    Regex VimeoVideoRegex = new Regex("vimeo\\.com/(?:.*#|.*/videos/)?([0-9]+)");
+    Match youtubeMatch = YoutubeVideoRegex.Match(url);
+    Match vimeoMatch = VimeoVideoRegex.Match(url);
+    string videoid = string.Empty;
+}
+
+@foreach (var cont in Model)
+{
+    <div class="nodo-top"></div>
+	<div class="nodo-medio">
+    <div class="contenido">
+    <p><strong>@cont.Titulo</strong></p>
+    
+    @{
+    youtubeMatch = YoutubeVideoRegex.Match(cont.Ubicacion);
+    vimeoMatch = VimeoVideoRegex.Match(cont.Ubicacion);
+    videoid = string.Empty;
+
+    if (cont.Ubicacion.EndsWith(".jpg") || cont.Ubicacion.EndsWith(".bmp") || cont.Ubicacion.EndsWith(".png") || cont.Ubicacion.EndsWith(".tif"))
+    {
+                <img src="@cont.Ubicacion" alt="Thumbnail de video" width="590"/>
+    }
+    else if (youtubeMatch.Success)
+    {
+        videoid = youtubeMatch.Groups[1].Value;
+                <iframe class="youtube-player" type="text/html" width="590" height="355" src="http://www.youtube.com/embed/@videoid" frameborder="0"></iframe>
+    }
+    else if (vimeoMatch.Success)
+    {
+        videoid = vimeoMatch.Groups[1].Value;
+                <iframe src="http://player.vimeo.com/video/@videoid" width="590" height="355" frameborder="0"></iframe>
+    }
+    else if (cont.Ubicacion.EndsWith(".mp4") || cont.Ubicacion.EndsWith(".3gp"))
+    {
+                <object width="590" height="355" id="MediaPlayer" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95" codebase="http://activex.microsoft.com/..." standby="Loading Microsoft® Windows® Media Player components..." type="application/x-oleobject">
+                <embed autostart="false" type="application/x-mplayer2" pluginspage="http://www.microsoft.com/windows/mediaplayer/download/default.asp" border="0" src="@cont.Ubicacion" width="590" height="355"></embed>
+                </object>
+    }
+    else if (cont.Ubicacion.EndsWith(".mp3"))
+    {
+                <embed type="application/x-shockwave-flash" src="http://www.google.com/reader/ui/3523697345-audio-player.swf" flashvars="audioUrl=@cont.Ubicacion" width="590" height="27" quality="best"></embed>
+    }
+    else
+    {
+                <a href="@cont.Ubicacion">@cont.Ubicacion</a>
+    }
+
+    ViewBag.IdContenido = cont.Id;
+    ViewBag.MeGusta = true;
+    ViewBag.Inadecuado = false;
+    <br/><br/>
+    var logueado = Session["logueado"];
+              if ((logueado != null) && (bool)logueado)
+              {
+                        <div class="panel" style="height:70px; width:inherit; color:Black">
+                        
+                        @{
+                            Html.RenderAction("ObtenerOpcionesContenido", "Contenido", new { idCont = cont.Id });
+                        }
+                        <p>Categoría temática: @cont.CategoriaTematica.Nombre</p>
+                        <p>Compartido por @cont.EspecificacionUsuario.Membership el @cont.FechaPosteado.ToString("d") a las @cont.FechaPosteado.ToString("t") </p>
+                        </div>
+              }
+              else
+              {
+                  
+                    <div class="panel" style="height:45px; width:inherit; background-color:ThreeDDarkShadow">
+                    <p>Categoría temática: @cont.CategoriaTematica.Nombre</p>
+                    <p>Compartido el @cont.FechaPosteado.ToString("d") a las @cont.FechaPosteado.ToString("t") </p>
+                    </div>
+                
+             }
+             }
+    </div>
+    </div>
+    <div class="nodo-end"></div>
+}

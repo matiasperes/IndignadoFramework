@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d5165a50-1c64-4940-a197-197f66020e0e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://indignado.cloudapp.net:8080/IntegracionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="IntegracionService4.xsd" MetadataType="Schema" ID="b9f0717b-4a51-45d8-9246-215fe61c54d1" SourceId="1" SourceUrl="http://indignado.cloudapp.net:8080/IntegracionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="IntegracionService41.xsd" MetadataType="Schema" ID="64bc35f4-01c6-4ca7-acf4-4b534cc15cba" SourceId="1" SourceUrl="http://indignado.cloudapp.net:8080/IntegracionService.svc?xsd=xsd3" />
+    <MetadataFile FileName="IntegracionService42.xsd" MetadataType="Schema" ID="39648e51-c9bf-43d3-bbb1-cf4872435dd0" SourceId="1" SourceUrl="http://indignado.cloudapp.net:8080/IntegracionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="IntegracionService43.xsd" MetadataType="Schema" ID="a60250c6-5b26-4fe3-a604-04e244c1f4b8" SourceId="1" SourceUrl="http://indignado.cloudapp.net:8080/IntegracionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="IntegracionService1.wsdl" MetadataType="Wsdl" ID="5731f920-5f12-4c18-9acc-be69ff4c5869" SourceId="1" SourceUrl="http://indignado.cloudapp.net:8080/IntegracionService.svc?wsdl" />
+    <MetadataFile FileName="IntegracionService1.disco" MetadataType="Disco" ID="7fe85729-dbe0-4524-9d6f-8c07138204be" SourceId="1" SourceUrl="http://indignado.cloudapp.net:8080/IntegracionService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

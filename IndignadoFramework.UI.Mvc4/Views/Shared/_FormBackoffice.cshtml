@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "_FormBackoffice";
+}
+
+<h2>Back Office</h2>
+<div id="navigation">
+	<ul>
+		@if (Roles.IsUserInRole("AdministradorGeneral"))
+  {
+		<li>@Html.ActionLink("Movimientos", "Index", "Movimiento")</li>
+		//<li>@Html.ActionLink("Convocatorias", "Index", "Convocatoria")</li>
+
+  }
+  else
+  { 
+
+		<li>@Html.ActionLink("Movimiento", "Index", "Movimiento")</li>
+		//<li>@Html.ActionLink("Convocatorias", "Index", "Convocatoria")</li>
+  }
+
+	</ul>
+	<div class="cl"></div>
+</div>

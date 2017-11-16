@@ -1,0 +1,109 @@
+﻿@using IndignadoFramework.Entities
+
+@{
+    double latitudd = (double)Session["latitudMov"];
+    double longitudd = (double)Session["longitudMov"];
+    float lat = (float)latitudd;
+    float lon = (float)longitudd;
+   
+}
+
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script type="text/javascript">
+          var map = null;
+          var pinInfobox = null;
+          var click;
+          function getMap() {
+              map = new Microsoft.Maps.Map(document.getElementById('Map'), { credentials: 'AjKX5fPclkvH3YTYhLImWMour1KISHMrcFVBrXzVsjqwMLiWobOq83esCN1ra0Q0' });
+              pinInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, offset: new Microsoft.Maps.Point(0, 20) });
+          }
+
+          
+          function setView() {
+              //map.setView({ zoom: 6, center: new Microsoft.Maps.Location(@lat, @lon) });
+
+              if ("@lat".indexOf(",") != -1 || "@lon".indexOf(",") != -1) {
+                  var valueLatitude = "@lat".split(",");
+                  var valueLongitud = "@lon".split(",");
+
+                  map.setView({ zoom: 12, center: new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])) });
+              } else {
+                  map.setView({ zoom: 12, center: new Microsoft.Maps.Location(parseFloat("@lat"), parseFloat("@lon")) });
+              }
+          }
+
+
+          function addPinPin(lon, lat, id, nombre)
+          {
+              var pushpin;
+              if (lat.indexOf(",") != -1 || lon.indexOf(",") != -1) {
+                  var valueLatitude = lat.split(",");
+                  var valueLongitud = lon.split(",");
+
+                  var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(valueLatitude[0] + "." + valueLatitude[1]), parseFloat(valueLongitud[0] + "." + valueLongitud[1])), {text: id});
+                  
+              } else {
+                  var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(parseFloat(lat), parseFloat(lon)), {text: id});
+                  
+              }
+
+            //var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lat,lon), {text: id});
+            pin.Title = nombre;
+            pin.Description = 'Lugar de convocatoria: (' + lon + ',' + lat + ')';
+
+            // Add handler for the pushpin click event.
+            Microsoft.Maps.Events.addHandler(pin, 'click', displayInfobox);
+
+            // Hide the infobox when the map is moved.
+            Microsoft.Maps.Events.addHandler(map, 'viewchange', hideInfobox);
+
+
+            map.entities.push(pin);
+            map.entities.push(pinInfobox);
+          }
+
+         function displayInfobox(e)
+         {
+            if (e.targetType == 'pushpin') {
+                  pinInfobox.setLocation(e.target.getLocation());
+                  pinInfobox.setOptions({ visible: true, title: e.target.Title, description: e.target.Description });
+              }
+         }                    
+
+         function hideInfobox(e)
+         {
+            pinInfobox.setOptions({ visible: false });
+         }
+
+          function addPines()
+          {
+                
+                @foreach (Convocatoria conv in ViewBag.Convocatorias)
+                {
+                    <text>
+                    //var lonn = '@((conv.UbicacionLongitud.ToString()).Replace(',','.'))';
+                    //var latt = '@((conv.UbicacionLatitud.ToString()).Replace(',','.'))';
+                    
+                    var lonn = '@conv.UbicacionLongitud';
+                    var latt = '@conv.UbicacionLatitud';
+                    var nombre = '@(conv.Titulo)';
+
+                    addPinPin(lonn,latt,'@(conv.Id)',nombre);
+                    </text> 
+                }
+                  
+           }
+
+          $(document).ready(function () { getMap(); setView() });
+          //; map.AttachEvent("onstartpan", addDraggablePushpin);
+          $(window).load(function () { addPines(); });
+
+         
+
+
+
+</script>
+
+<div id='Map' style="position:relative; width:auto; height:400px;"></div>
+			
